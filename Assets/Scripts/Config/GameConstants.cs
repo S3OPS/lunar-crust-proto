@@ -154,7 +154,18 @@ namespace MiddleEarth.Config
         /// <summary>Initial particle pool size</summary>
         public const int PARTICLE_POOL_INITIAL_SIZE = 100;
         
+        /// <summary>Maximum particle pool size before reuse</summary>
+        public const int PARTICLE_POOL_MAX_SIZE = 200;
+        
         /// <summary>Audio source pool size</summary>
         public const int AUDIO_SOURCE_POOL_SIZE = 10;
+        
+        
+        // ========================================
+        // PERFORMANCE OPTIMIZATION CONSTANTS
+        // ========================================
+        
+        /// <summary>Squared distance check for patrol reach (eliminates sqrt)</summary>
+        public const float PATROL_REACH_DISTANCE_SQR = 1f; // 1 unit squared
     }
 }
