@@ -1,4 +1,5 @@
 using UnityEngine;
+using MiddleEarth.Config;
 
 [System.Serializable]
 public class CharacterStats
@@ -48,15 +49,15 @@ public class CharacterStats
     {
         level++;
         experience -= experienceToNextLevel;
-        experienceToNextLevel = (int)(experienceToNextLevel * 1.5f);
+        experienceToNextLevel = (int)(experienceToNextLevel * GameConstants.XP_SCALING_FACTOR);
         
-        maxHealth += 20f;
+        maxHealth += GameConstants.LEVELUP_HEALTH_BONUS;
         currentHealth = maxHealth;
-        maxStamina += 10f;
+        maxStamina += GameConstants.LEVELUP_STAMINA_BONUS;
         currentStamina = maxStamina;
-        strength += 2;
-        wisdom += 2;
-        agility += 2;
+        strength += GameConstants.LEVELUP_STAT_INCREASE;
+        wisdom += GameConstants.LEVELUP_STAT_INCREASE;
+        agility += GameConstants.LEVELUP_STAT_INCREASE;
         
         Debug.Log($"🎉 LEVEL UP! You are now level {level}!");
         

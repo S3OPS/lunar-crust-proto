@@ -316,7 +316,7 @@ public class SimpleParticle : MonoBehaviour
 }
 
 /// <summary>
-/// Floating text animation
+/// Floating text animation (optimized with cached camera reference)
 /// </summary>
 public class FloatingText : MonoBehaviour
 {
@@ -324,6 +324,7 @@ public class FloatingText : MonoBehaviour
     private float _startTime;
     private Vector3 _startPosition;
     private Text _text;
+    private Camera _mainCamera;
     
     public void Initialize(float lifetime)
     {
@@ -331,6 +332,7 @@ public class FloatingText : MonoBehaviour
         _startTime = Time.time;
         _startPosition = transform.position;
         _text = GetComponent<Text>();
+        _mainCamera = Camera.main; // Cache once instead of per frame
     }
     
     private void Update()
@@ -347,10 +349,10 @@ public class FloatingText : MonoBehaviour
         // Float upward
         transform.position = _startPosition + Vector3.up * (t * 2f);
         
-        // Face camera
-        if (Camera.main != null)
+        // Face camera (using cached reference)
+        if (_mainCamera != null)
         {
-            transform.LookAt(Camera.main.transform);
+            transform.LookAt(_mainCamera.transform);
             transform.Rotate(0, 180, 0);
         }
         
