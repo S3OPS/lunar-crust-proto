@@ -100,6 +100,19 @@ public class QuestManager : MonoBehaviour
         {
             _inventory.AddItem(item);
         }
+        
+        Debug.Log($"✅ Quest Complete: {quest.questName}!");
+        
+        // Effects and achievements
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PlayQuestCompleteSound();
+        }
+        
+        if (AchievementSystem.Instance != null)
+        {
+            AchievementSystem.Instance.OnQuestCompleted(quest.questId);
+        }
     }
 
     public List<Quest> GetActiveQuests()
