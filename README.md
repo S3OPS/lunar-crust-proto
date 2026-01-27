@@ -31,7 +31,6 @@ Extractor → Conveyor → Refinery → Ingots (watch the HUD counters update).
 
 ## Folder Map
 - `Assets/Scripts` — Runtime gameplay code
-- `Assets/Scenes/Main.unity` — Minimal scene (runtime bootstrap)
 - `Assets/StreamingAssets/config.json` — Tunable prototype config
 - `tools/install.ps1` — One-command setup
 - `docs/SETUP.md` — Dummy-proof guide
