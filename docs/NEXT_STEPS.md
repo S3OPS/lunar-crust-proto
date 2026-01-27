@@ -249,6 +249,7 @@ namespace MiddleEarth.Config
     /// <summary>
     /// Centralized game balance constants.
     /// Modify these values to tune gameplay without changing code.
+    /// All magic numbers from the codebase are defined here for maintainability.
     /// </summary>
     public static class GameConstants
     {
