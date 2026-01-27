@@ -1,4 +1,4 @@
-# LUNAR CRUST — Dummy-Proof Setup (Windows)
+# MIDDLE-EARTH ADVENTURE RPG — Dummy-Proof Setup (Windows)
 
 ## One Command Install
 Open PowerShell inside the repo and run:
@@ -13,14 +13,14 @@ pwsh -ExecutionPolicy Bypass -File ./tools/install.ps1 -AutoRun
 ```
 
 ## What It Does
-- Creates a local config in `%LOCALAPPDATA%\LunarCrust`
-- Copies the prototype config
+- Creates a local config in `%LOCALAPPDATA%\MiddleEarthRPG`
+- Copies the RPG game config
 - Creates a launcher script
 - Launches Unity Hub (if installed)
 
 ## Run Later
 ```powershell
-powershell -ExecutionPolicy Bypass -File "$env:LOCALAPPDATA\LunarCrust\run.ps1"
+powershell -ExecutionPolicy Bypass -File "$env:LOCALAPPDATA\MiddleEarthRPG\run.ps1"
 ```
 
 ## Open in Unity
@@ -30,10 +30,26 @@ powershell -ExecutionPolicy Bypass -File "$env:LOCALAPPDATA\LunarCrust\run.ps1"
 4. Press **Play**
 
 ## Controls
-- **WASD**: Move
-- **Mouse**: Look
+- **WASD**: Move your character
+- **Mouse**: Look around
 - **Shift**: Sprint
 - **Space**: Jump
+- **Walk into objects**: Interact with NPCs, chests, and locations
 
-## Prototype Loop
-Extractor → Conveyor → Refinery → Ingots (HUD updates live)
+## Gameplay Guide
+### Getting Started
+1. Start in the center of Middle-earth
+2. Check your HUD (top-left) for active quests and character stats
+3. Walk to The Shire (green area, southwest) to begin your adventure
+
+### Completing Quests
+- **The Shire's Burden**: Collect Lembas Bread from chests and explore the Old Forest
+- **Fellowship of the Ring**: Find and talk to Gandalf, Legolas, and Gimli
+- **Riders of Rohan**: Travel to the golden plains and defeat Orc Scouts
+- **The Path to Mordor**: Venture into the dark lands and face the ultimate challenge
+
+### Tips
+- Defeating enemies grants experience and gold
+- Opening treasure chests rewards you with items and gold
+- Discovering new locations grants bonus experience
+- Level up to increase your stats and become more powerful
