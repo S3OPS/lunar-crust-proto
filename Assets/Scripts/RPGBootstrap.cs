@@ -328,9 +328,11 @@ public class RPGBootstrap : MonoBehaviour
         _questManager = questObj.AddComponent<QuestManager>();
         _questManager.Initialize(_playerStats, _inventory);
 
-        // Activate starting quest
+        // Activate starting quests
         _questManager.ActivateQuest("shire_burden");
         _questManager.ActivateQuest("fellowship");
+        _questManager.ActivateQuest("master_arms");
+        _questManager.ActivateQuest("treasure_seeker");
     }
 
     private void SetupUi()
