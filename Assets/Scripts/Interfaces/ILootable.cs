@@ -15,9 +15,11 @@ namespace MiddleEarth.Interfaces
         
         /// <summary>
         /// Get the loot from this object.
+        /// Note: Returns objects as System.Object to avoid circular dependencies.
+        /// Cast to Item type at the application layer.
         /// </summary>
         /// <returns>List of items that can be looted.</returns>
-        IEnumerable<Item> GetLoot();
+        IEnumerable<object> GetLoot();
         
         /// <summary>
         /// Get the gold amount from this object.

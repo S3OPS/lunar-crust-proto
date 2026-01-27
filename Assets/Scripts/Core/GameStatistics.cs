@@ -46,11 +46,20 @@ namespace MiddleEarth.Core
             }
             Instance = this;
             SessionStartTime = DateTime.Now;
+            StartCoroutine(TrackPlayTime());
         }
         
-        private void Update()
+        /// <summary>
+        /// Track play time every second instead of every frame for better performance.
+        /// </summary>
+        private System.Collections.IEnumerator TrackPlayTime()
         {
-            TotalPlayTime += Time.deltaTime;
+            var waitForSecond = new WaitForSeconds(1f);
+            while (true)
+            {
+                TotalPlayTime += 1f;
+                yield return waitForSecond;
+            }
         }
         
         // Combat tracking methods

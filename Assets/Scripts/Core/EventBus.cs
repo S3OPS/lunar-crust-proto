@@ -57,13 +57,14 @@ namespace MiddleEarth.Core
             
             if (_subscribers.ContainsKey(type))
             {
-                var handlers = _subscribers[type];
-                for (int i = handlers.Count - 1; i >= 0; i--)
+                // Create a copy to safely iterate while allowing modifications
+                var handlers = new List<Delegate>(_subscribers[type]);
+                foreach (var handler in handlers)
                 {
                     try
                     {
-                        var handler = handlers[i] as Action<T>;
-                        handler?.Invoke(gameEvent);
+                        var typedHandler = handler as Action<T>;
+                        typedHandler?.Invoke(gameEvent);
                     }
                     catch (Exception ex)
                     {
@@ -204,17 +205,19 @@ namespace MiddleEarth.Core
     
     /// <summary>
     /// Event fired when equipment is changed.
+    /// Note: Uses string for slot to avoid circular dependencies with RPG assembly.
+    /// Valid values: "Weapon", "Armor", "Accessory", "None"
     /// </summary>
     public struct EquipmentChangedEvent : IGameEvent
     {
         public string ItemName { get; }
-        public EquipmentSlot Slot { get; }
+        public string SlotName { get; }
         public bool IsEquipped { get; }
         
-        public EquipmentChangedEvent(string itemName, EquipmentSlot slot, bool isEquipped)
+        public EquipmentChangedEvent(string itemName, string slotName, bool isEquipped)
         {
             ItemName = itemName;
-            Slot = slot;
+            SlotName = slotName;
             IsEquipped = isEquipped;
         }
     }
