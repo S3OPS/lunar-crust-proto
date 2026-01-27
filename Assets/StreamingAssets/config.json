@@ -1,4 +1,5 @@
-{"extractorRate": 2.5,
+{
+  "extractorRate": 2.5,
   "conveyorRate": 2.0,
   "refineryRate": 1.25,
   "startOre": 0,
