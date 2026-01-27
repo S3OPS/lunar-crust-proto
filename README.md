@@ -36,6 +36,14 @@ pwsh -ExecutionPolicy Bypass -File ./tools/install.ps1 -AutoRun
 - **Walk into objects**: Interact with NPCs, treasure chests, and locations
 
 ## Game Features
+
+### 🌍 World Expansion (v2.3) - NEW!
+- **Dynamic Day/Night Cycle**: 24-hour time system with realistic lighting and time-based events
+- **Weather System**: Rain, snow, fog, and storms that affect gameplay
+- **Fast Travel**: Discover and travel instantly between waypoints across Middle-earth
+- **Procedural Dungeons**: Multi-floor dungeons with bosses, treasures, and scaling difficulty
+
+### Core RPG Systems
 - **Character System**: Track your health, stamina, experience, and level up your hero
 - **Active Combat System**: 
   - Left-click to attack enemies with weapon combos
@@ -120,17 +128,23 @@ pwsh -ExecutionPolicy Bypass -File ./tools/install.ps1 -AutoRun
 
 ## New Features Highlights
 
-### v2.3 World Expansion 🌍 (In Progress)
+### v2.3 World Expansion 🌍 (Active Development - January 27, 2026)
 
-**Next Phase - Priority 2 Features:**
-Following the Critical Path Forward from THE_ONE_RING.md, v2.3 will introduce:
-- **Dungeon System**: Multi-floor procedural dungeons with boss encounters
-- **Dynamic Weather**: Environmental effects (rain, snow, fog) affecting gameplay
-- **Day/Night Cycle**: Time-based events, NPC schedules, and dynamic lighting
-- **Fast Travel**: Waypoint system for discovered locations
+**Implemented Features - Priority 2:**
+- ✅ **Day/Night Cycle**: Full 24-hour time system with dynamic lighting, sun/moon rotation, and time-based events
+- ✅ **Dynamic Weather**: Five weather types (Clear, Rain, Snow, Fog, Storm) with gameplay effects on movement and visibility
+- ✅ **Fast Travel System**: Waypoint-based travel with discovery mechanics across 6 Middle-earth locations in 3 regions
+- ✅ **Dungeon System**: Procedural multi-floor dungeons (3-10 floors) with boss encounters, treasure rooms, and difficulty scaling
+- ✅ **World Manager**: Integrated system coordinating all world features with environmental difficulty modifiers
 
-**Status**: Planning phase - detailed specifications being developed  
-**Timeline**: 6 weeks estimated development  
+**Core Capabilities:**
+- Time progression affects lighting, NPC behavior, and enemy difficulty (+20% at night)
+- Weather dynamically changes with smooth transitions and affects player movement (rain -5%, snow -15%)
+- Discover and fast travel to waypoints in The Shire, Rohan, and Mordor regions
+- Generate dungeons with 5 themes (Cave, Crypt, Fortress, Mine, Tower) and progressive difficulty
+- Environmental modifiers stack: night + weather + dungeon = dynamic challenge
+
+**Status**: Core systems implemented (60% complete) - UI/polish phase next  
 **Documentation**: See [THE_ONE_RING.md](docs/THE_ONE_RING.md) for complete roadmap
 
 ---
