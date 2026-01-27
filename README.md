@@ -2,6 +2,19 @@
 
 An immersive 3D RPG game set in a Lord of the Rings inspired fantasy world. Embark on epic quests, battle fearsome enemies, and explore the legendary lands of Middle-earth. The scene auto-builds itself at runtime for the fastest start.
 
+## 💍 The One Ring - Master Roadmap
+
+**For developers and contributors:** See **[docs/THE_ONE_RING.md](docs/THE_ONE_RING.md)** for the complete master roadmap that unifies:
+- 🦅 Optimization: "Make the journey faster" 
+- 🏕️ Refactoring: "Clean up the camp"
+- ⚔️ Modularization: "Break up the Fellowship"
+- 🛡️ Security Audit: "Inspect the ranks"
+- ✨ Enhancement & Upgrade roadmap
+
+**Project Health Score: 8.2/10** | **4-week plan to production-perfect** | **46 improvements identified**
+
+---
+
 ## One-command local install (PowerShell)
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\tools\install.ps1 -AutoRun
@@ -90,12 +103,13 @@ pwsh -ExecutionPolicy Bypass -File ./tools/install.ps1 -AutoRun
 - `Assets/StreamingAssets/rpg_config.json` — Tunable game settings
 - `tools/install.ps1` — One-command setup
 - `docs/` — Comprehensive documentation
+  - **THE_ONE_RING.md** 💍 **START HERE!** — Master roadmap & status dashboard unifying all initiatives
   - **INDEX.md** — Complete documentation navigation guide
-  - **AUDIT_IMPLEMENTATION_SUMMARY.md** ⭐ **START HERE!** — Overview of audit work & deliverables
   - **CODE_AUDIT.md** ⭐ **CRITICAL** — Comprehensive code quality audit (46 issues identified)
   - **NEXT_STEPS.md** ⭐ **ACTION PLAN** — 4-week implementation roadmap with concrete fixes
+  - **ENHANCEMENT_PLAN.md** — Future roadmap with 50+ enhancement ideas across 7 categories
   - **REPOSITORY_STRUCTURE.md** — Codebase navigation and architecture guide
-  - **ENHANCEMENT_PLAN.md** — Future roadmap with code quality initiatives (optimize, refactor, modularize, audit) and 50+ enhancement ideas across 7 categories
+  - **AUDIT_IMPLEMENTATION_SUMMARY.md** — Overview of audit work & deliverables
   - **PROBLEM_STATEMENT_MAPPING.md** — Maps problem statement to documentation
   - SETUP.md — Installation guide
   - GAME_DESIGN.md — Complete game design document
