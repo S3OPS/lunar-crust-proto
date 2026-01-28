@@ -439,6 +439,87 @@ error CS0006: Metadata file 'Library/PackageCache/com.unity.collab-proxy@.../Uni
 
 **Note:** The `com.unity.collab-proxy` package is for Unity's cloud collaboration features. If you're not using cloud collaboration, removing this package won't affect your ability to play the game.
 
+### "TLS Allocator ALLOC_TEMP_TLS, underlying allocator ALLOC_TEMP_MAIN has unfreed allocations"
+
+**What it looks like:**
+```
+TLS Allocator ALLOC_TEMP_TLS, underlying allocator ALLOC_TEMP_MAIN has unfreed allocations, size 37
+```
+
+**What it means:** This is a Unity memory allocation warning that occurs when temporary memory isn't being properly cleaned up. This can happen during scene loading, script compilation, or when certain Unity systems don't release their temporary buffers correctly.
+
+**Why the main scene might not populate:** If this error appears along with an empty scene after pressing Play, it usually indicates that the runtime bootstrap system failed to initialize properly due to a memory or script issue.
+
+**Step-by-step fix:**
+
+1. **Restart Unity completely**
+   - Close Unity Editor
+   - Wait a few seconds
+   - Reopen the project from Unity Hub
+   - This clears temporary memory allocations
+
+2. **Clear the Library folder** (most effective)
+   - Close Unity completely
+   - Open the project folder in File Explorer (Windows) or Finder (macOS)
+   - Delete the entire `Library` folder
+   - Reopen the project in Unity Hub
+   - Wait for Unity to reimport all assets (5-15 minutes)
+
+3. **Debug with diagnostic command** (advanced)
+   - To identify the exact source of the memory leak, run Unity with the diagnostic flag:
+     - **Windows:** Open Command Prompt and run:
+       ```
+       "C:\Program Files\Unity\Hub\Editor\2022.3.0f1\Editor\Unity.exe" -projectPath "YOUR_PROJECT_PATH" -diag-temp-memory-leak-validation
+       ```
+     - **macOS:** Open Terminal and run:
+       ```
+       /Applications/Unity/Hub/Editor/2022.3.0f1/Unity.app/Contents/MacOS/Unity -projectPath "YOUR_PROJECT_PATH" -diag-temp-memory-leak-validation
+       ```
+   - Replace `YOUR_PROJECT_PATH` with the full path to your project folder
+   - Replace `2022.3.0f1` with your actual Unity version
+   - This outputs call stacks showing exactly where the leaked allocations originate
+
+4. **Check for script compilation errors**
+   - In Unity, open the Console window: **Window → General → Console**
+   - Look for any red error messages
+   - All script errors must be fixed before the runtime bootstrap can work
+   - Try: **Assets → Reimport All** to recompile all scripts
+
+5. **Ensure correct Unity version**
+   - This project requires **Unity 2022.3.x LTS**
+   - Using a significantly different Unity version can cause memory allocation issues
+   - In Unity Hub, verify you're using a 2022.3.x version
+
+6. **Check for corrupted project settings**
+   - Close Unity
+   - In your project folder, delete the `Library` folder AND the `Temp` folder
+   - Reopen the project and let Unity rebuild everything
+
+**If the main scene still doesn't populate after these steps:**
+
+1. **Verify the Main scene is loaded**
+   - Check the Hierarchy panel (left side) - it should show objects like "World Builder", "Player", etc. after pressing Play
+   - If empty, make sure you opened `Assets/Scenes/Main.unity` (not SampleScene or another scene)
+
+2. **Check that bootstrap scripts exist**
+   - In the Project panel, navigate to `Assets/Scripts/RPG`
+   - Verify that core files like `WorldBuilder.cs`, `NPCManager.cs`, and `QuestManager.cs` exist
+   - If files are missing, re-download the project from GitHub
+
+3. **Look for specific errors in Console**
+   - Click on any red error messages to see details
+   - Common issues:
+     - `NullReferenceException` - A script couldn't find a required object
+     - `MissingReferenceException` - A reference to a deleted object
+     - `TypeLoadException` - Script compilation issue
+
+4. **Try a fresh download**
+   - If nothing else works, download the project again from GitHub
+   - Extract to a new folder with a simple path (avoid special characters)
+   - Open the fresh project in Unity
+
+**Note:** The "unfreed allocations, size 37" warning by itself (without the scene failing to load) is often harmless and can be ignored. It only becomes a problem when combined with other issues like the scene not populating.
+
 ---
 
 ## Game Controls
