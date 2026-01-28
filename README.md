@@ -8,6 +8,12 @@ An immersive 3D RPG game set in a Lord of the Rings inspired fantasy world. Emba
 
 👉 **[Complete Beginner's Guide](docs/BEGINNERS_GUIDE.md)** — Explains everything from downloading Unity to playing the game
 
+## 🎮 Don't Want to Use Unity?
+
+**Looking for alternatives to Unity?** We've got you covered! Check out our comprehensive guide:
+
+👉 **[Alternative Game Engines](docs/ALTERNATIVE_ENGINES.md)** — Learn about Godot, Unreal, and other free alternatives to Unity
+
 ---
 
 ## 💍 The One Ring - Master Roadmap

@@ -32,6 +32,13 @@ Welcome to the Middle-earth Adventure RPG documentation! This index will help yo
    - Troubleshooting common problems
    - Full game controls reference
 
+0.5. **[ALTERNATIVE_ENGINES.md](ALTERNATIVE_ENGINES.md)** 🎮 **DON'T WANT TO USE UNITY?**
+   - Comprehensive guide to free alternatives (Godot, Unreal, etc.)
+   - Feature comparisons and recommendations
+   - Pros and cons of each engine
+   - Quick start guide for Godot
+   - Porting considerations
+
 1. **[README.md](../README.md)** - Project overview, features, and quick start
    - Game features and controls
    - One-command installation
@@ -178,6 +185,9 @@ Welcome to the Middle-earth Adventure RPG documentation! This index will help yo
 
 ### "I've never installed anything like this before"
 → Read: **BEGINNERS_GUIDE.md** - Complete step-by-step guide for absolute beginners
+
+### "I don't want to use Unity / Looking for alternatives"
+→ Read: **ALTERNATIVE_ENGINES.md** - Comprehensive guide to free game engines like Godot and Unreal
 
 ### "I want to play the game"
 → Read: **SETUP.md** (Installation & Gameplay Guide)
@@ -354,6 +364,17 @@ Welcome to the Middle-earth Adventure RPG documentation! This index will help yo
 - v1.0 Initial Release
 - Future planned enhancements
 
+### ALTERNATIVE_ENGINES.md (NEW!)
+**Purpose:** Guide to free alternatives to Unity  
+**Length:** ~400 lines  
+**Best for:** Anyone considering alternatives to Unity  
+**Key sections:**
+- 7 detailed engine comparisons (Godot, Unreal, Bevy, O3DE, Defold, jMonkey, Panda3D)
+- Complete feature comparison table
+- Recommendations based on use case
+- Quick start guide for Godot
+- Porting considerations
+
 ---
 
 ## 🔄 Document Update Policy
@@ -403,5 +424,5 @@ For questions about the documentation:
 ---
 
 **Last Updated:** January 2026  
-**Total Documentation:** 11 major documents + README + CHANGELOG  
-**Total Pages:** ~6,100 lines of documentation
+**Total Documentation:** 12 major documents + README + CHANGELOG  
+**Total Pages:** ~6,450 lines of documentation

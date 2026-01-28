@@ -24,6 +24,14 @@ Middle-earth Adventure RPG is a 3D role-playing game inspired by The Lord of the
 
 This is a **Unity project**, which means it was made using a program called Unity. To play the game, you need to install Unity first.
 
+### 🎮 Don't Want to Use Unity?
+
+**Looking for alternatives?** This project is built with Unity, but if you'd prefer to build games with other free engines like Godot or Unreal, check out our comprehensive guide:
+
+👉 **[Alternative Game Engines Guide](ALTERNATIVE_ENGINES.md)** — Learn about free alternatives to Unity
+
+**Note:** This guide assumes you're using Unity. If you choose a different engine, you would need to rebuild the game from scratch in that engine.
+
 ---
 
 ## What You'll Need
