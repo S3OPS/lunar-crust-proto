@@ -129,8 +129,11 @@ pwsh -ExecutionPolicy Bypass -File ./tools/install.ps1 -AutoRun
 ## Open in Unity
 - Open Unity Hub
 - Add the project folder
-- Open **Main** scene
-- Press **Play**
+- Open the project in Unity
+- **⚠️ Open the Main scene**: Navigate to `Assets/Scenes` in the Project panel and double-click **Main.unity**
+  - If you see an empty scene with only "Main Camera" and "Directional Light", you're in the wrong scene!
+  - The correct scene will have objects like "World Builder", "Player", etc.
+- Press **Play** (▶️ button at top center)
 
 ## Build
 - File → Build Settings → Add Open Scenes → Build & Run

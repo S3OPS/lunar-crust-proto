@@ -27,7 +27,12 @@ powershell -ExecutionPolicy Bypass -File "$env:LOCALAPPDATA\MiddleEarthRPG\run.p
 1. Open Unity Hub
 2. Add the project folder
 3. Open the project
-4. Press **Play**
+4. **⚠️ IMPORTANT: Open the Main scene**
+   - In Unity, go to `Assets/Scenes` in the Project panel (bottom)
+   - Double-click **Main.unity** to open it
+   - The Hierarchy panel (left) should show game objects like "World Builder", "Player", etc.
+   - If you only see "Main Camera" and "Directional Light", you're in the wrong scene!
+5. Press **Play** (▶️ button at top center)
 
 ## Controls
 - **WASD**: Move your character
