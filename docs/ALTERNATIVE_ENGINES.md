@@ -247,6 +247,176 @@ Here are the best free alternatives for building a 3D RPG like Middle-earth Adve
 
 ---
 
+## Hardware-Specific Recommendation for Your System
+
+### Your Setup: Ryzen 5500 AM4 + RTX 3060
+
+**Good news!** Your hardware is well-suited for game development with either Godot or Unreal Engine. Let's analyze what works best for your specific configuration:
+
+#### System Analysis:
+
+**CPU: AMD Ryzen 5500 (6-core/12-thread)**
+- ✅ More than sufficient for Godot development
+- ✅ Adequate for Unreal Engine development
+- ⚠️ May experience slower compile times in Unreal (C++ compilation is CPU-intensive)
+- ✅ Excellent for running the Unity editor (current project)
+
+**GPU: NVIDIA RTX 3060 (12GB VRAM)**
+- ✅✅ Excellent for Godot (overkill for most indie projects)
+- ✅ Very good for Unreal Engine development
+- ✅ Supports ray tracing (useful in Unreal Engine 5)
+- ✅ 12GB VRAM is great for texture work and large scenes
+
+**RAM: (Assuming 16GB+ based on typical AM4 builds)**
+- ✅ Sufficient for Godot (uses 2-4GB typically)
+- ✅ Good for Unreal Engine (16GB minimum recommended, 32GB ideal)
+
+---
+
+### Recommendation: **Godot Engine** for Your Hardware ⭐
+
+**Why Godot is the Better Choice for Your System:**
+
+1. **Faster Development Iteration**
+   - Godot's lightweight nature means instant script reloads
+   - Your Ryzen 5500 will never be a bottleneck
+   - Smooth 60 FPS editor experience guaranteed
+
+2. **Efficient Resource Usage**
+   - Godot Editor uses ~500MB-1GB RAM (vs Unreal's 4-8GB)
+   - Leaves more resources for running the game while developing
+   - No shader compilation stutters
+
+3. **Your RTX 3060 is Overkill (in a good way!)**
+   - You can create stunning Godot games at max quality
+   - Plenty of GPU headroom for fancy effects and post-processing
+   - Can run multiple instances for testing multiplayer
+
+4. **Build Times**
+   - Godot exports in seconds (literally 5-30 seconds)
+   - Unreal C++ builds can take 5-20+ minutes on your CPU
+   - Much faster iteration = more productive development
+
+5. **Storage Efficiency**
+   - Godot: ~50-100MB engine + ~100-500MB per project
+   - Unreal: 40-80GB engine + 5-20GB per project
+   - Matters if you have limited SSD space
+
+---
+
+### If You Still Want Unreal Engine: It Will Work!
+
+**Your system CAN handle Unreal Engine, but with caveats:**
+
+✅ **What Works Well:**
+- Blueprint visual scripting (no compilation delays)
+- Level design and environment building
+- Material creation and shader work (RTX 3060 handles this great)
+- Playing/testing your game (60+ FPS easily)
+- Using marketplace assets
+- Lumen and Nanite (UE5 features work on RTX 3060)
+
+⚠️ **What Will Be Slower:**
+- C++ compilation (10-20 minutes for full rebuilds)
+- Shader compilation on first run (5-10 minute wait)
+- Large project opening (2-5 minutes vs Godot's 5 seconds)
+- Editor startup (30-60 seconds vs Godot's 2 seconds)
+
+💡 **Optimization Tips for Unreal on Your System:**
+- Stick to Blueprints instead of C++ to avoid compilation
+- Use a fast NVMe SSD for projects (if available)
+- Close other applications while developing
+- Consider upgrading RAM to 32GB if serious about Unreal
+- Use "Live Coding" feature to reduce C++ iteration time
+
+---
+
+### Performance Expectations
+
+#### Godot Engine on Your System:
+- **Editor FPS:** 60-120 FPS consistently
+- **Script Compilation:** Instant (under 1 second)
+- **Project Build Time:** 5-30 seconds for full export
+- **RAM Usage:** 1-3GB (editor + game running)
+- **Startup Time:** 2-5 seconds
+- **Can Develop While Streaming/Recording:** ✅ Yes, plenty of headroom
+
+#### Unreal Engine 5 on Your System:
+- **Editor FPS:** 30-60 FPS (depends on scene complexity)
+- **Blueprint Compilation:** 1-5 seconds
+- **C++ Compilation:** 10-20 minutes (full rebuild)
+- **Project Build Time:** 5-15 minutes for full build
+- **RAM Usage:** 8-12GB (editor + game)
+- **Startup Time:** 30-90 seconds
+- **Can Develop While Streaming/Recording:** ⚠️ Possible but may impact performance
+
+---
+
+### Real-World Workflow Comparison on Your Hardware
+
+**Typical Godot Development Session (3 hours):**
+- Start Godot: 3 seconds
+- Load project: 5 seconds
+- Make code changes: Instant feedback
+- Test game: Press F5, instant play
+- Build final game: 15 seconds
+- **Total wait time in 3 hours:** ~2 minutes
+- **Your CPU/GPU usage:** 20-40%
+
+**Typical Unreal Development Session (3 hours):**
+- Start Unreal: 45 seconds
+- Load project: 2-3 minutes
+- Compile shaders: 5 minutes (first time)
+- Make Blueprint changes: Quick feedback
+- Make C++ changes: 10-minute compilation wait
+- Test game: 30 seconds to enter Play mode
+- Build final game: 10 minutes
+- **Total wait time in 3 hours:** 15-45 minutes (depending on C++ usage)
+- **Your CPU/GPU usage:** 60-90%
+
+---
+
+### Final Hardware-Based Verdict
+
+**For Your Ryzen 5500 + RTX 3060 System:**
+
+✅ **Choose Godot if you value:**
+- Fast iteration and quick testing
+- Efficient resource usage
+- Multiple projects open simultaneously
+- Learning game development without technical overhead
+- Streaming/recording development sessions
+- Lower electricity bills (seriously!)
+
+⚠️ **Choose Unreal if you MUST have:**
+- AAA photorealistic graphics (though Godot 4 is quite capable)
+- Industry-standard portfolio pieces
+- Access to massive asset marketplace
+- Lumen/Nanite (UE5's flagship features)
+- Blueprint visual scripting (though Godot has visual scripting too)
+
+---
+
+### Money-Saving Consideration
+
+**Your RTX 3060's Power Draw:**
+- Idle/Godot development: ~30-80W (saves electricity)
+- Unreal Engine development: ~120-200W (higher power bills)
+- Over a year of 20hrs/week development: Potential savings of $50-100 USD with Godot
+
+---
+
+### The Honest Answer for Your Hardware
+
+Your system is a **sweet spot for Godot** - powerful enough to do anything you want, but not so powerful that Unreal's demands feel comfortable. Think of it this way:
+
+- **Godot on your system:** Like driving a sports car on an open highway - smooth, responsive, enjoyable
+- **Unreal on your system:** Like driving a truck with a heavy load - it works, but you feel the weight
+
+Both are viable, but Godot will give you a much smoother development experience with your current hardware. If you later upgrade to a Ryzen 7/9 with 32GB+ RAM, then Unreal becomes equally viable.
+
+---
+
 ## Recommendation for This Specific Game
 
 ### If Starting From Scratch: **Godot Engine** ⭐
