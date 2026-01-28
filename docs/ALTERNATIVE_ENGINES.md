@@ -367,7 +367,7 @@ This example demonstrates how to evaluate engine choices based on specific hardw
 - Test game: Press F5, instant play
 - Build final game: 15 seconds
 - **Total wait time in 3 hours:** ~2 minutes
-- **Your CPU/GPU usage:** 20-40%
+- **Expected CPU/GPU usage:** 20-40%
 
 **Example Unreal Development Session (3 hours):**
 - Start Unreal: 45 seconds
@@ -378,23 +378,23 @@ This example demonstrates how to evaluate engine choices based on specific hardw
 - Test game: 30 seconds to enter Play mode
 - Build final game: 10 minutes
 - **Total wait time in 3 hours:** 15-45 minutes (depending on C++ usage)
-- **Your CPU/GPU usage:** 60-90%
+- **Expected CPU/GPU usage:** 60-90%
 
 ---
 
-### Final Hardware-Based Verdict
+### Engine Selection Guide for This Hardware Configuration
 
-**For Your Ryzen 5500 + RTX 3060 System:**
+**For This Hardware Tier (Ryzen 5500 + RTX 3060):**
 
-✅ **Choose Godot if you value:**
+✅ **Godot is recommended when these factors are priorities:**
 - Fast iteration and quick testing
 - Efficient resource usage
 - Multiple projects open simultaneously
 - Learning game development without technical overhead
 - Streaming/recording development sessions
-- Lower electricity bills (seriously!)
+- Lower operating costs
 
-⚠️ **Choose Unreal if you MUST have:**
+⚠️ **Unreal is recommended when these features are essential:**
 - AAA photorealistic graphics (though Godot 4 is quite capable)
 - Industry-standard portfolio pieces
 - Access to massive asset marketplace
@@ -421,7 +421,7 @@ This system represents a **sweet spot for Godot** - powerful enough for professi
 
 Both engines are viable options, but Godot will generally provide a smoother development experience with this hardware tier. Upgrading to a higher-end CPU (Ryzen 7/9) with 32GB+ RAM would make Unreal equally comfortable.
 
-> **For Similar Hardware:** If you have a 6-8 core CPU, 16GB RAM, and a mid-range GPU (RTX 3060, RX 6600 XT, or similar), this analysis applies to your system as well.
+> **Applicability:** This analysis also applies to similar hardware configurations with 6-8 core CPUs, 16GB RAM, and mid-range GPUs (RTX 3060, RX 6600 XT, or similar).
 
 ---
 
