@@ -366,11 +366,11 @@ Welcome to the Middle-earth Adventure RPG documentation! This index will help yo
 
 ### ALTERNATIVE_ENGINES.md (NEW!)
 **Purpose:** Guide to free alternatives to Unity  
-**Length:** ~350 lines  
+**Length:** ~400 lines  
 **Best for:** Anyone considering alternatives to Unity  
 **Key sections:**
-- 7 detailed engine comparisons (Godot, Unreal, Bevy, O3DE, etc.)
-- Feature comparison table
+- 7 detailed engine comparisons (Godot, Unreal, Bevy, O3DE, Defold, jMonkey, Panda3D)
+- Complete feature comparison table
 - Recommendations based on use case
 - Quick start guide for Godot
 - Porting considerations

@@ -239,7 +239,9 @@ Here are the best free alternatives for building a 3D RPG like Middle-earth Adve
 | **Unity 2022.3** | ✅ Yes* | ❌ No | ✅✅ Excellent | ⭐⭐⭐ Medium | All-around |
 | **Bevy** | ✅ Yes | ✅ Yes | ⚠️ Limited | ⭐⭐⭐⭐⭐ Very Hard | Rust experts |
 | **O3DE** | ✅ Yes | ✅ Yes | ✅ Good | ⭐⭐⭐⭐ Hard | AAA open-source |
+| **Defold** | ✅ Yes | ❌ No | ⚠️ Weak 3D | ⭐⭐ Easy | 2D games, mobile |
 | **jMonkeyEngine** | ✅ Yes | ✅ Yes | ⚠️ Basic | ⭐⭐⭐ Medium | Java developers |
+| **Panda3D** | ✅ Yes | ✅ Yes | ⚠️ Dated | ⭐⭐ Easy | Educational, Python |
 
 *Free with conditions (Unity: subscription tiers exist; Unreal: 5% royalty after $1M)
 
@@ -322,7 +324,6 @@ If you want to try Godot as an alternative to Unity:
    extends CharacterBody3D
    
    var speed = 5.0
-   var jump_velocity = 4.5
    
    func _physics_process(delta):
        if Input.is_action_pressed("ui_right"):
