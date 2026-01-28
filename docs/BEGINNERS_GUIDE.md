@@ -141,7 +141,8 @@ The Unity Editor is the actual program that runs the game. You need a specific v
 
 1. In Unity Hub, click **"Installs"** in the left sidebar
 2. Click the **"Install Editor"** button (blue button)
-3. Find **Unity 2022.3.x LTS** (the exact number after 2022.3 doesn't matter much, but 2022.3.0 is ideal)
+3. Find **Unity 2022.3.0f1 LTS** (this is the specific version the project uses)
+   - If you can't find exactly 2022.3.0f1, any 2022.3.x version should work
    - LTS means "Long Term Support" - it's a stable version
 4. Click **Install** next to it
 5. On the next screen, you can leave the default options selected
@@ -228,8 +229,7 @@ Almost there! Just a couple more clicks:
    - The game will start in the center panel called "Game"
 
 3. **To stop playing**
-   - Click the Play button again, or
-   - Press the **Escape** key
+   - Click the Play button again (the same button you used to start)
 
 ---
 
@@ -303,6 +303,13 @@ Once the game is running, here's how to play:
 | **Character Sheet** | C key |
 | **World Map** | M key |
 | **Settings Menu** | ESC or O key |
+
+### Advanced Controls (Optional)
+
+These are developer and testing tools - you don't need these to play the game:
+
+| Action | Control |
+|--------|---------|
 | **Performance Monitor** | F3 key |
 | **Release Checklist** | F4 key |
 | **Feedback System** | F5 key |
