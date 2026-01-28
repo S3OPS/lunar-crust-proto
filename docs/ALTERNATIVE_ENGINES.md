@@ -671,40 +671,40 @@ class_name ItemResource
 When building from scratch, use this checklist to ensure feature parity:
 
 **Core Mechanics:**
-- [ ] Player movement (WASD + mouse)
-- [ ] Camera controller (third-person)
-- [ ] Combat system (attack, special abilities)
-- [ ] Health, stamina, XP systems
-- [ ] Level-up progression
+- [x] Player movement (WASD + mouse)
+- [x] Camera controller (third-person)
+- [x] Combat system (attack, special abilities)
+- [x] Health, stamina, XP systems
+- [x] Level-up progression
 
 **Systems:**
-- [ ] Inventory management
-- [ ] Equipment (weapons, armor, accessories)
-- [ ] Quest system (matching Unity version's 7 main quests)
-- [ ] Achievement tracking
-- [ ] Save/load functionality
+- [x] Inventory management
+- [x] Equipment (weapons, armor, accessories)
+- [x] Quest system (matching Unity version's 7 main quests)
+- [x] Achievement tracking
+- [x] Save/load functionality
 
 **World:**
-- [ ] Terrain and locations (Shire, Rohan, Mordor)
-- [ ] Enemy AI and spawning
-- [ ] Treasure chests and loot
-- [ ] NPCs and dialogue
-- [ ] Day/night cycle
-- [ ] Weather system
+- [x] Terrain and locations (Shire, Rohan, Mordor)
+- [x] Enemy AI and spawning
+- [x] Treasure chests and loot
+- [x] NPCs and dialogue
+- [x] Day/night cycle
+- [x] Weather system
 
 **UI:**
-- [ ] HUD (health, stamina, XP bar)
-- [ ] Minimap
-- [ ] Quest journal
-- [ ] Character sheet
-- [ ] Inventory screen
-- [ ] Settings menu
+- [x] HUD (health, stamina, XP bar)
+- [x] Minimap
+- [x] Quest journal
+- [x] Character sheet
+- [x] Inventory screen
+- [x] Settings menu
 
 **Polish:**
-- [ ] Visual effects (particles)
-- [ ] Sound effects
-- [ ] Dungeon generation
-- [ ] Boss encounters
+- [x] Visual effects (particles)
+- [x] Sound effects
+- [x] Dungeon generation
+- [x] Boss encounters
 
 ---
 
