@@ -235,6 +235,23 @@ Almost there! Just a couple more clicks:
 
 ## Troubleshooting
 
+### I only see an empty blue/gray scene (no game content)
+
+**What it looks like:** The Game view shows just a skybox with no terrain, characters, or objects. The Hierarchy panel only shows "Main Camera" and "Directional Light" in a scene called "SampleScene" or another default scene.
+
+**What it means:** You're viewing the wrong scene. The actual game is in the "Main" scene.
+
+**What to do:**
+1. In the Unity Editor, look at the bottom panel called **"Project"**
+2. Navigate to `Assets` → `Scenes` (double-click folders to open them)
+3. Double-click on **"Main"** (or **"Main.unity"**)
+4. The Hierarchy panel (left side) should now show many objects like "World Builder", "Player", "GameManager", etc.
+5. Now press the **Play button** (▶️) at the top center
+
+If you still see an empty scene after opening Main.unity, try:
+- Make sure the file exists: look for `Main.unity` in `Assets/Scenes`
+- Close Unity, delete the `Library` folder in the project, and reopen the project
+
 ### "Unity version mismatch" or similar warning
 
 **What it means:** The project wants a slightly different Unity version.
