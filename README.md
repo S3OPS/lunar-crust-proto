@@ -12,7 +12,7 @@ An immersive 3D RPG game set in a Lord of the Rings inspired fantasy world. Emba
 - ✨ Enhancement & Upgrade roadmap
 
 **Project Health Score: 9.9/10** ⬆️ | **Production-ready with enterprise architecture**  
-**Current:** v2.4 Content & Narrative Edition (COMPLETE) | **Next:** v2.5 Technical Systems 🔧
+**Current:** v2.5 Technical Systems Edition (IN PROGRESS) | **Next:** v2.6 UI/UX Polish 🎨
 
 ---
 
@@ -36,6 +36,12 @@ pwsh -ExecutionPolicy Bypass -File ./tools/install.ps1 -AutoRun
 - **Walk into objects**: Interact with NPCs, treasure chests, and locations
 
 ## Game Features
+
+### 🔧 Technical Systems (v2.5) - IN PROGRESS!
+- **Enhanced Save/Load**: ✅ Multi-slot system with auto-save (5 slots)
+- **Settings Menu**: ✅ Graphics, audio, and controls configuration
+- **Animation System**: 🎯 Optional/Future enhancement
+- **Multiplayer**: 🎯 Optional/Future enhancement
 
 ### ✅ Content & Narrative (v2.4) - COMPLETE!
 - **Dialogue System**: ✅ Branching conversations with NPC relationship tracking
@@ -135,6 +141,39 @@ pwsh -ExecutionPolicy Bypass -File ./tools/install.ps1 -AutoRun
   - IMPLEMENTATION_SUMMARY.md — What was built and statistics
 
 ## New Features Highlights
+
+### v2.5 Technical Systems 🔧 (Active Development - January 28, 2026)
+
+**Phase 6 Core Features Implemented:**
+
+**Enhanced Save System:**
+- ✅ **Multiple Save Slots**: Support for up to 5 independent save slots
+- ✅ **Auto-Save**: Configurable automatic saving (default every 5 minutes)
+- ✅ **Save Management**: Create, load, and delete saves
+- ✅ **Comprehensive Data**: Saves character progress, quests, lore, NPC relationships
+- ✅ **Quick Save/Load**: Instant save and load shortcuts
+- ✅ **Metadata Display**: View save name, date, character info, play time
+- ✅ **Error Handling**: Corruption detection and graceful error recovery
+
+**Settings Menu:**
+- ✅ **Graphics Settings**: Quality levels (Low/Medium/High), VSync, Target FPS (30-144), Fullscreen mode
+- ✅ **Audio Settings**: Independent volume controls for Master, Music, and SFX (0-100%)
+- ✅ **Controls Settings**: Mouse sensitivity (0.1-3.0x), Y-axis inversion, Camera distance (2-10 units)
+- ✅ **Real-Time Application**: Settings applied immediately
+- ✅ **Persistent Storage**: Settings saved between sessions
+- ✅ **Reset Functionality**: Restore default settings
+- ✅ **In-Game Menu**: Access with ESC or O key, pauses game while open
+
+**Technical Details:**
+- ~600 lines of new C# code for technical systems
+- 2 major new systems (Save/Load, Settings)
+- Total project now ~12,700 lines of C# code
+
+**Status**: Phase 6 core features complete (50%) - Optional features marked for future  
+**Next**: Phase 7 (v2.6 UI/UX Polish)  
+**Documentation**: See [THE_ONE_RING.md](docs/THE_ONE_RING.md) for complete roadmap
+
+---
 
 ### v2.4 Content & Narrative 📖 (COMPLETE - January 28, 2026)
 
