@@ -109,7 +109,8 @@ func can_travel_to(waypoint_id: String) -> Dictionary:
 	
 	# Check mount requirement (for future mount system)
 	if waypoint.requires_mount:
-		if MountManager and not MountManager.has_active_mount():
+		# Check if player has an active mount
+		if MountManager and MountManager.get_active_mount() == null:
 			result["reason"] = "Requires a mount"
 			return result
 	

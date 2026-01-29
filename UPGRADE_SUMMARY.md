@@ -46,13 +46,13 @@ This document summarizes the comprehensive upgrades, enhancements, optimizations
 
 ### Manager Scripts (5 files)
 1. **specialization_manager.gd**
-   - Removed TODOs, added proper stat bonus application
+   - Added proper comment about bonus tracking pending full integration
    - Added type hints throughout
    - Improved documentation with @param tags
 
 2. **crafting_manager.gd**
    - Enhanced error messages
-   - Improved null checking for GameInitializer
+   - Improved null checking for GameInitializer and player stats
    - Better return type documentation
 
 3. **accessibility_manager.gd**
@@ -61,7 +61,7 @@ This document summarizes the comprehensive upgrades, enhancements, optimizations
    - Better audio bus handling
 
 4. **fast_travel_manager.gd**
-   - Removed TODO for mount system, added proper check
+   - Fixed mount system check to use existing get_active_mount() method
    - Fixed gold deduction method call
    - Enhanced waypoint status tracking
 

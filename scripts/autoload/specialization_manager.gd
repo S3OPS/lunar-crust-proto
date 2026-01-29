@@ -94,11 +94,16 @@ func _apply_specialization_bonuses(spec_id: String) -> void:
 	var spec: SpecializationResource = specializations[spec_id]
 	
 	# Apply bonuses to player stats through GameManager
+	# Note: Bonuses are currently logged only; full integration requires
+	# extended CharacterStats properties for attack/defense modifiers
 	if GameManager.has_valid_player() and GameManager.player_stats:
-		var stats: CharacterStats = GameManager.player_stats
-		# Note: These bonuses would need to be stored separately to avoid stacking on load
-		if OS.is_debug_build():
-			print("SpecializationManager: Applied bonuses - +%d attack, +%d defense" % [spec.attack_bonus, spec.defense_bonus])
+		# Future enhancement: Add attack_modifier and defense_modifier to CharacterStats
+		# GameManager.player_stats.attack_modifier += spec.attack_bonus
+		# GameManager.player_stats.defense_modifier += spec.defense_bonus
+		pass
+	
+	if OS.is_debug_build():
+		print("SpecializationManager: Specialization ready - +%d attack, +%d defense (bonus tracking pending full stats integration)" % [spec.attack_bonus, spec.defense_bonus])
 
 ## Get a specialization by ID
 ## @param spec_id: The ID of the specialization to retrieve

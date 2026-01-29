@@ -67,8 +67,13 @@ func can_craft(recipe_id: String) -> Dictionary:
 	var recipe: RecipeResource = recipes[recipe_id]
 	
 	# Check level requirement
-	if GameManager.player_stats and GameManager.player_stats.level < recipe.required_level:
-		result["reason"] = "Level %d required" % recipe.required_level
+	if GameManager.player_stats:
+		if GameManager.player_stats.level < recipe.required_level:
+			result["reason"] = "Level %d required" % recipe.required_level
+			return result
+	else:
+		# Cannot craft without player stats initialized
+		result["reason"] = "Player not initialized"
 		return result
 	
 	# Check crafting skill requirement
