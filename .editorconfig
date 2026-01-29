@@ -6,6 +6,10 @@ insert_final_newline = true
 charset = utf-8
 trim_trailing_whitespace = true
 
+[*.gd]
+indent_style = tab
+indent_size = 1
+
 [*.cs]
 indent_style = space
 indent_size = 4
@@ -13,3 +17,7 @@ indent_size = 4
 [*.json]
 indent_style = space
 indent_size = 2
+
+[*.{tscn,tres}]
+indent_style = space
+indent_size = 1
