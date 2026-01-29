@@ -1,6 +1,6 @@
 extends CanvasLayer
 ## HUD overlay displaying player stats
-## Shows health, stamina, XP, and level
+## Shows health, stamina, XP, and level with real-time updates
 
 @onready var health_bar: ProgressBar = $MarginContainer/VBoxContainer/HealthBar
 @onready var health_label: Label = $MarginContainer/VBoxContainer/HealthBar/Label
@@ -15,55 +15,104 @@ var player: Node = null
 
 func _ready() -> void:
 	# Connect to EventBus signals
-	EventBus.player_health_changed.connect(_on_health_changed)
-	EventBus.player_stamina_changed.connect(_on_stamina_changed)
-	EventBus.player_experience_gained.connect(_on_experience_gained)
-	EventBus.player_level_up.connect(_on_level_up)
+	if EventBus.player_health_changed.connect(_on_health_changed) != OK:
+		push_error("Failed to connect player_health_changed signal")
+	if EventBus.player_stamina_changed.connect(_on_stamina_changed) != OK:
+		push_error("Failed to connect player_stamina_changed signal")
+	if EventBus.player_experience_gained.connect(_on_experience_gained) != OK:
+		push_error("Failed to connect player_experience_gained signal")
+	if EventBus.player_level_up.connect(_on_level_up) != OK:
+		push_error("Failed to connect player_level_up signal")
 	
 	# Get player reference
 	await get_tree().process_frame
 	player = GameManager.get_player()
 	
 	# Initialize UI if player exists
-	if player and player.stats:
+	if _validate_player():
 		_update_all_stats()
+	else:
+		push_warning("HUD: Player not found or invalid stats")
 
 
+## Validate that player and stats exist
+func _validate_player() -> bool:
+	return player != null and is_instance_valid(player) and player.stats != null
+
+
+## Update all UI elements with current stats
 func _update_all_stats() -> void:
-	if player and player.stats:
-		var stats = player.stats
-		_on_health_changed(stats.current_health, stats.max_health)
-		_on_stamina_changed(stats.current_stamina, stats.max_stamina)
-		_on_experience_gained(0, stats.experience)
-		level_label.text = "Level " + str(stats.level)
-
-
-func _on_health_changed(current: float, max: float) -> void:
-	if health_bar and health_label:
-		health_bar.max_value = max
-		health_bar.value = current
-		health_label.text = "Health: %d / %d" % [int(current), int(max)]
-
-
-func _on_stamina_changed(current: float, max: float) -> void:
-	if stamina_bar and stamina_label:
-		stamina_bar.max_value = max
-		stamina_bar.value = current
-		stamina_label.text = "Stamina: %d / %d" % [int(current), int(max)]
-
-
-func _on_experience_gained(_amount: int, total: int) -> void:
-	if player and player.stats and xp_bar and xp_label:
-		var stats = player.stats
-		xp_bar.max_value = stats.experience_to_next_level
-		xp_bar.value = stats.experience
-		xp_label.text = "XP: %d / %d" % [stats.experience, stats.experience_to_next_level]
-
-
-func _on_level_up(new_level: int) -> void:
-	if level_label:
-		level_label.text = "Level " + str(new_level)
+	if not _validate_player():
+		return
 	
-	# Update XP bar
-	if player and player.stats:
-		_on_experience_gained(0, player.stats.experience)
+	var stats = player.stats
+	_update_health_bar(stats.current_health, stats.max_health)
+	_update_stamina_bar(stats.current_stamina, stats.max_stamina)
+	_update_experience_bar(stats.experience, stats.experience_to_next_level)
+	_update_level_label(stats.level)
+
+
+## Update health bar and label
+func _update_health_bar(current: float, maximum: float) -> void:
+	if not health_bar or not health_label:
+		return
+	
+	health_bar.max_value = maximum
+	health_bar.value = current
+	health_label.text = "Health: %d / %d" % [int(current), int(maximum)]
+
+
+## Update stamina bar and label
+func _update_stamina_bar(current: float, maximum: float) -> void:
+	if not stamina_bar or not stamina_label:
+		return
+	
+	stamina_bar.max_value = maximum
+	stamina_bar.value = current
+	stamina_label.text = "Stamina: %d / %d" % [int(current), int(maximum)]
+
+
+## Update experience bar and label
+func _update_experience_bar(current: int, maximum: int) -> void:
+	if not xp_bar or not xp_label:
+		return
+	
+	xp_bar.max_value = maximum
+	xp_bar.value = current
+	xp_label.text = "XP: %d / %d" % [current, maximum]
+
+
+## Update level label
+func _update_level_label(level: int) -> void:
+	if not level_label:
+		return
+	
+	level_label.text = "Level %d" % level
+
+
+## Signal handler for health changes
+func _on_health_changed(current: float, maximum: float) -> void:
+	_update_health_bar(current, maximum)
+
+
+## Signal handler for stamina changes
+func _on_stamina_changed(current: float, maximum: float) -> void:
+	_update_stamina_bar(current, maximum)
+
+
+## Signal handler for experience gained
+func _on_experience_gained(_amount: int, _total: int) -> void:
+	if not _validate_player():
+		return
+	
+	var stats = player.stats
+	_update_experience_bar(stats.experience, stats.experience_to_next_level)
+
+
+## Signal handler for level up
+func _on_level_up(new_level: int) -> void:
+	_update_level_label(new_level)
+	
+	# Update XP bar after level up
+	if _validate_player():
+		_update_experience_bar(player.stats.experience, player.stats.experience_to_next_level)

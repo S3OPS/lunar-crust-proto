@@ -55,8 +55,11 @@ func _ready() -> void:
 
 ## Handle taking damage from enemies
 func take_damage(damage: float) -> void:
-	if stats:
-		stats.take_damage(damage)
+	if not stats:
+		push_error("Player has no stats, cannot take damage")
+		return
+	
+	stats.take_damage(damage)
 
 
 func _input(event: InputEvent) -> void:
@@ -152,23 +155,45 @@ func _handle_stamina_regen(delta: float) -> void:
 
 
 func _perform_attack() -> void:
+	if not _is_attack_valid():
+		return
+	
 	print("⚔️ Player attacks!")
 	can_attack = false
 	attack_cooldown_timer = Constants.ATTACK_COOLDOWN
 	
-	# Check for hit using raycast
-	if attack_raycast and attack_raycast.is_colliding():
-		var target = attack_raycast.get_collider()
-		if target and target.has_method("take_damage"):
-			var damage = Constants.calculate_damage(Constants.PLAYER_BASE_ATTACK_DAMAGE, stats.strength)
-			var is_critical = Constants.is_critical_hit()
-			
-			if is_critical:
-				damage = Constants.apply_critical_multiplier(damage)
-				print("💥 CRITICAL HIT! Damage: ", damage)
-			
-			target.take_damage(damage)
-			EventBus.damage_dealt.emit(target, damage, is_critical)
+	var target = _get_attack_target()
+	if target:
+		_deal_attack_damage(target)
+
+
+## Check if attack can be performed
+func _is_attack_valid() -> bool:
+	return attack_raycast != null and attack_raycast.is_colliding()
+
+
+## Get the target of the attack
+func _get_attack_target() -> Node:
+	if not attack_raycast:
+		return null
+	
+	var target = attack_raycast.get_collider()
+	if target and target.has_method("take_damage"):
+		return target
+	return null
+
+
+## Deal damage to target
+func _deal_attack_damage(target: Node) -> void:
+	var damage = Constants.calculate_damage(Constants.PLAYER_BASE_ATTACK_DAMAGE, stats.strength)
+	var is_critical = Constants.is_critical_hit()
+	
+	if is_critical:
+		damage = Constants.apply_critical_multiplier(damage)
+		print("💥 CRITICAL HIT! Damage: %.1f" % damage)
+	
+	target.take_damage(damage)
+	EventBus.damage_dealt.emit(target, damage, is_critical)
 
 
 func _perform_special_attack() -> void:
@@ -183,6 +208,22 @@ func _perform_special_attack() -> void:
 	stamina_regen_timer = Constants.STAMINA_REGEN_DELAY
 	
 	# Deal AOE damage to nearby enemies
+	_deal_aoe_damage()
+
+
+## Deal area of effect damage to nearby enemies
+func _deal_aoe_damage() -> void:
+	var targets = _get_nearby_enemies()
+	var damage = Constants.calculate_damage(Constants.PLAYER_SPECIAL_ATTACK_DAMAGE, stats.strength)
+	
+	for target in targets:
+		if target.has_method("take_damage"):
+			target.take_damage(damage)
+			EventBus.damage_dealt.emit(target, damage, false)
+
+
+## Get all enemies within special attack range
+func _get_nearby_enemies() -> Array:
 	var space_state = get_world_3d().direct_space_state
 	var query = PhysicsShapeQueryParameters3D.new()
 	var sphere = SphereShape3D.new()
@@ -192,12 +233,10 @@ func _perform_special_attack() -> void:
 	query.collision_mask = 4  # Enemy layer
 	
 	var results = space_state.intersect_shape(query)
+	var enemies = []
 	for result in results:
-		var target = result.collider
-		if target and target.has_method("take_damage"):
-			var damage = Constants.calculate_damage(Constants.PLAYER_SPECIAL_ATTACK_DAMAGE, stats.strength)
-			target.take_damage(damage)
-			EventBus.damage_dealt.emit(target, damage, false)
+		enemies.append(result.collider)
+	return enemies
 
 
 ## Get save data for this player
