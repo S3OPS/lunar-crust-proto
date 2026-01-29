@@ -23,7 +23,20 @@ Welcome to the Middle-earth Adventure RPG documentation! This index will help yo
    - Exporting the game as standalone executable
    - Comprehensive troubleshooting
 
-3. **[ALTERNATIVE_ENGINES.md](ALTERNATIVE_ENGINES.md)** 🎮 **MIGRATION STORY**
+3. **[SCREENSHOTS_GUIDE.md](SCREENSHOTS_GUIDE.md)** 📸 **SEE WHAT THE GAME LOOKS LIKE!**
+   - Detailed visual descriptions of the game
+   - HUD and UI layout explanations
+   - Player and enemy appearance
+   - Combat visuals and effects
+   - Instructions for taking your own screenshots
+
+4. **[VISUAL_OVERVIEW.md](VISUAL_OVERVIEW.md)** 🎨 **TECHNICAL VISUAL SPECS**
+   - Color scheme and art style
+   - Scene layout and composition
+   - UI component specifications
+   - Visual effects and rendering details
+
+5. **[ALTERNATIVE_ENGINES.md](ALTERNATIVE_ENGINES.md)** 🎮 **MIGRATION STORY**
    - Why we chose Godot
    - Migration journey and progress
    - Comparison with other engines
@@ -115,6 +128,9 @@ Welcome to the Middle-earth Adventure RPG documentation! This index will help yo
 
 ## 🎯 Quick Navigation by Goal
 
+### "I want to see what the game looks like"
+→ Read: **[SCREENSHOTS_GUIDE.md](SCREENSHOTS_GUIDE.md)** - Detailed visual descriptions and UI overview
+
 ### "I want to install and play the game"
 → Read: **[GETTING_STARTED.md](GETTING_STARTED.md)** - Complete setup and installation guide
 
@@ -141,8 +157,8 @@ Welcome to the Middle-earth Adventure RPG documentation! This index will help yo
 ## 📊 Documentation Statistics
 
 ### Active Godot Documentation
-- **Total Documents:** 5 active guides
-- **Focus:** Getting started, setup, game design, and migration story
+- **Total Documents:** 7 active guides
+- **Focus:** Getting started, setup, game design, visual documentation, and migration story
 - **Status:** Up-to-date for Godot 4.3+
 
 ### Archived Unity Documentation
@@ -223,6 +239,31 @@ The documentation is now focused on the **Godot implementation**. When contribut
 - Game controls and gameplay
 - Exporting standalone executables
 - Comprehensive troubleshooting
+
+### SCREENSHOTS_GUIDE.md
+**Purpose:** Detailed visual descriptions of how the game looks  
+**Length:** ~450 lines  
+**Best for:** Anyone wanting to see what the game looks like without running it  
+**Key sections:**
+- Main game view and environment
+- Player character appearance and camera
+- Enemy visual design (Orcs)
+- Complete HUD layout with diagrams
+- Combat visual feedback
+- Movement and control visuals
+- Instructions for capturing your own screenshots
+
+### VISUAL_OVERVIEW.md
+**Purpose:** Technical visual specifications and layout details  
+**Length:** ~200 lines  
+**Best for:** Developers, designers, artists  
+**Key sections:**
+- Scene layout with ASCII diagrams
+- Color scheme specifications (RGB values)
+- UI component dimensions and styling
+- Visual effects and rendering settings
+- Window and display settings
+- Art style philosophy
 
 ### CHANGELOG.md
 **Purpose:** Version history  
