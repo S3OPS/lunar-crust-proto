@@ -37,7 +37,8 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	# Toggle performance stats with F3
+	# Toggle performance stats with F3 (ui_text_completion_query)
+	# Note: Define custom "toggle_debug_stats" action in project settings for better control
 	if event.is_action_pressed("ui_text_completion_query"):  # F3 by default
 		show_performance_stats = not show_performance_stats
 

@@ -127,21 +127,21 @@ class SaveData:
 	
 	
 	## Validate and clamp integer value
-	static func _validate_int(value, min_val: int, max_val: int) -> int:
+	static func _validate_int(value: Variant, min_val: int, max_val: int) -> int:
 		if not (value is int or value is float):
 			return min_val
 		return clampi(int(value), min_val, max_val)
 	
 	
 	## Validate and clamp float value
-	static func _validate_float(value, min_val: float, max_val: float) -> float:
+	static func _validate_float(value: Variant, min_val: float, max_val: float) -> float:
 		if not (value is float or value is int):
 			return min_val
 		return clampf(float(value), min_val, max_val)
 	
 	
 	## Sanitize string to prevent injection
-	static func _sanitize_string(value) -> String:
+	static func _sanitize_string(value: Variant) -> String:
 		if not value is String:
 			return ""
 		# Remove potential control characters and limit length
@@ -152,14 +152,14 @@ class SaveData:
 	
 	
 	## Validate array type
-	static func _validate_array(value) -> Array:
+	static func _validate_array(value: Variant) -> Array:
 		if value is Array:
 			return value
 		return []
 	
 	
 	## Validate dictionary type
-	static func _validate_dict(value) -> Dictionary:
+	static func _validate_dict(value: Variant) -> Dictionary:
 		if value is Dictionary:
 			return value
 		return {}
@@ -228,12 +228,20 @@ func load_game(slot_index: int) -> bool:
 		push_error("Save file does not exist: %s" % file_path)
 		return false
 	
-	# Check file size for security
-	var file_size = FileAccess.get_file_as_bytes(file_path).size()
+	# Check file size for security using file handle
+	var file_check = FileAccess.open(file_path, FileAccess.READ)
+	if file_check == null:
+		push_error("Failed to open save file for size check: %s" % file_path)
+		return false
+	
+	var file_size = file_check.get_length()
+	file_check.close()
+	
 	if file_size > MAX_SAVE_FILE_SIZE:
 		push_error("Save file too large (potential corruption): %d bytes" % file_size)
 		return false
 	
+	# Open file for reading
 	var file = FileAccess.open(file_path, FileAccess.READ)
 	
 	if file == null:

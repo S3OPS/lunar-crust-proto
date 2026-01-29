@@ -25,13 +25,19 @@ var _sprint_speed: float = 0.0
 
 
 ## Initialize the movement component
-func initialize(character: CharacterBody3D, stats: CharacterStats) -> void:
+func initialize(character: CharacterBody3D, stats: CharacterStats) -> bool:
+	if not is_instance_valid(character) or not is_instance_valid(stats):
+		push_error("PlayerMovementComponent: Invalid initialization parameters")
+		return false
+	
 	_character = character
 	_stats = stats
 	
 	# Cache values
 	_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 	_sprint_speed = Constants.get_sprint_speed()
+	
+	return true
 
 
 ## Process movement input and update velocity

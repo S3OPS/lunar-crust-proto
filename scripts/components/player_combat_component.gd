@@ -130,13 +130,15 @@ func _deal_aoe_damage() -> void:
 
 ## Get all enemies within special attack range
 func _get_nearby_enemies() -> Array:
+	const ENEMY_COLLISION_LAYER = 4  # Matches layer 3 (enemies) in project settings
+	
 	var space_state = _character.get_world_3d().direct_space_state
 	var query = PhysicsShapeQueryParameters3D.new()
 	var sphere = SphereShape3D.new()
 	sphere.radius = Constants.SPECIAL_AOE_RADIUS
 	query.shape = sphere
 	query.transform = _character.global_transform
-	query.collision_mask = 4  # Enemy layer
+	query.collision_mask = ENEMY_COLLISION_LAYER
 	
 	var results = space_state.intersect_shape(query)
 	var enemies = []

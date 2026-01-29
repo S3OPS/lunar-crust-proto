@@ -6,8 +6,7 @@ extends CharacterBody3D
 
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var camera: Camera3D = $CameraPivot/Camera3D
-@ontml:parameter>
-<parameter name="attack_raycast: RayCast3D = $AttackRaycast
+@onready var attack_raycast: RayCast3D = $AttackRaycast
 
 # Movement
 var move_speed: float = Constants.PLAYER_WALK_SPEED

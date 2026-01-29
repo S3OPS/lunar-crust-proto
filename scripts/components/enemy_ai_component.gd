@@ -56,8 +56,14 @@ func initialize(enemy: CharacterBody3D, nav_agent: NavigationAgent3D, spawn_pos:
 
 ## Process AI logic and state transitions
 func process_ai(delta: float, current_health: float, max_health: float) -> void:
-	if current_state == State.DEAD or not _player:
+	if current_state == State.DEAD:
 		return
+	
+	# Validate player reference
+	if not is_instance_valid(_player):
+		_player = GameManager.get_player()
+		if not is_instance_valid(_player):
+			return
 	
 	# Update cooldowns
 	if attack_cooldown_timer > 0:
