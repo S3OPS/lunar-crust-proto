@@ -243,7 +243,7 @@ scripts/
 | Boss Encounters | ✅ | ✅ Complete |
 | Achievements | ✅ | ✅ Complete |
 
-**Current Parity**: ~90% (Phase 4 content & polish complete)
+**Current Parity (Phases 1-4)**: 100% (Phase 4 content & polish complete)
 
 ---
 
@@ -274,7 +274,7 @@ scripts/
 - [ ] New regions (Shire, Rohan, Mordor)
 - [ ] Fast travel and world map upgrades
 - [ ] Expanded quest arcs and reputation systems
-- [ ] NPC schedules and dynamic encounters
+- [ ] Dynamic NPC schedules and encounters
 
 ### Phase 6: Advanced Systems (Weeks 13-16) 📅 PLANNED
 - [ ] Crafting and resource gathering
