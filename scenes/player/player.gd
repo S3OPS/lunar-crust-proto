@@ -6,7 +6,8 @@ extends CharacterBody3D
 
 @onready var camera_pivot: Node3D = $CameraPivot
 @onready var camera: Camera3D = $CameraPivot/Camera3D
-@onready var attack_raycast: RayCast3D = $AttackRaycast
+@ontml:parameter>
+<parameter name="attack_raycast: RayCast3D = $AttackRaycast
 
 # Movement
 var move_speed: float = Constants.PLAYER_WALK_SPEED
@@ -25,6 +26,10 @@ var special_cooldown_timer: float = 0.0
 # Stamina regeneration
 var stamina_regen_timer: float = 0.0
 
+# Cached values for performance
+var _gravity: float = 0.0
+var _sprint_speed: float = 0.0
+
 
 func _ready() -> void:
 	# Create default stats if not assigned
@@ -40,6 +45,10 @@ func _ready() -> void:
 	# Set up attack raycast
 	if attack_raycast:
 		attack_raycast.target_position = Vector3(0, 0, -Constants.ATTACK_RANGE)
+	
+	# Cache frequently accessed values for performance
+	_gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+	_sprint_speed = Constants.get_sprint_speed()
 	
 	print("✅ Player initialized: ", stats.character_name)
 
@@ -90,7 +99,7 @@ func _handle_movement(delta: float) -> void:
 	is_sprinting = Input.is_action_pressed("sprint") and stats.current_stamina > 0
 	
 	if is_sprinting:
-		move_speed = Constants.get_sprint_speed()
+		move_speed = _sprint_speed  # Use cached value
 		# Drain stamina while sprinting
 		stats.use_stamina(Constants.SPRINT_STAMINA_DRAIN_RATE * delta)
 		stamina_regen_timer = Constants.STAMINA_REGEN_DELAY
@@ -111,7 +120,7 @@ func _handle_movement(delta: float) -> void:
 	
 	# Apply gravity
 	if not is_on_floor():
-		velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
+		velocity.y -= _gravity * delta  # Use cached gravity
 
 
 func _handle_combat(delta: float) -> void:

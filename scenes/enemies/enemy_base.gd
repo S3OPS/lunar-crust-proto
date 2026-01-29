@@ -30,6 +30,13 @@ var next_patrol_time: float = 0.0
 var spawn_position: Vector3 = Vector3.ZERO
 var patrol_target: Vector3 = Vector3.ZERO
 
+# Cached values for performance
+var _attack_range_sqr: float = 0.0
+var _detection_range_sqr: float = 0.0
+var _flee_health_threshold: float = 0.0
+var _flee_speed: float = 0.0
+var _patrol_speed: float = 0.0
+
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var mesh_instance: MeshInstance3D = $MeshInstance3D
 
@@ -38,6 +45,13 @@ func _ready() -> void:
 	spawn_position = global_position
 	current_health = max_health
 	_set_new_patrol_point()
+	
+	# Cache frequently used values for performance
+	_attack_range_sqr = Constants.ENEMY_ATTACK_RANGE * Constants.ENEMY_ATTACK_RANGE
+	_detection_range_sqr = Constants.ENEMY_DETECTION_RANGE * Constants.ENEMY_DETECTION_RANGE
+	_flee_health_threshold = max_health * Constants.ENEMY_FLEE_HEALTH_PERCENT
+	_flee_speed = Constants.ENEMY_MOVE_SPEED * Constants.ENEMY_FLEE_SPEED_MULTIPLIER
+	_patrol_speed = Constants.ENEMY_MOVE_SPEED * Constants.ENEMY_PATROL_SPEED_MULTIPLIER
 	
 	# Get player reference
 	await get_tree().process_frame
@@ -60,17 +74,15 @@ func _physics_process(delta: float) -> void:
 	
 	# Get distance to player (squared for performance)
 	var distance_to_player = global_position.distance_squared_to(player.global_position)
-	var attack_range_sqr = Constants.ENEMY_ATTACK_RANGE * Constants.ENEMY_ATTACK_RANGE
-	var detection_range_sqr = Constants.ENEMY_DETECTION_RANGE * Constants.ENEMY_DETECTION_RANGE
 	
 	# Check if should flee
-	if current_health <= max_health * Constants.ENEMY_FLEE_HEALTH_PERCENT:
+	if current_health <= _flee_health_threshold:
 		current_state = State.FLEE
 	# Check if can attack
-	elif distance_to_player <= attack_range_sqr:
+	elif distance_to_player <= _attack_range_sqr:
 		current_state = State.ATTACK
 	# Check if should chase
-	elif distance_to_player <= detection_range_sqr:
+	elif distance_to_player <= _detection_range_sqr:
 		current_state = State.CHASE
 	else:
 		current_state = State.PATROL
@@ -94,9 +106,9 @@ func _physics_process(delta: float) -> void:
 		
 		var speed = Constants.ENEMY_MOVE_SPEED
 		if current_state == State.FLEE:
-			speed *= Constants.ENEMY_FLEE_SPEED_MULTIPLIER
+			speed = _flee_speed  # Use cached value
 		elif current_state == State.PATROL:
-			speed *= Constants.ENEMY_PATROL_SPEED_MULTIPLIER
+			speed = _patrol_speed  # Use cached value
 		
 		velocity = direction * speed
 		
