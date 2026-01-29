@@ -1,6 +1,7 @@
 extends Node
 ## Global game manager singleton
 ## Handles game state, scene transitions, and high-level game logic
+## Provides centralized player reference and game statistics
 
 enum GameState {
 	MENU,
@@ -30,11 +31,21 @@ func _process(delta: float) -> void:
 		total_play_time += delta
 
 
-## Set the game state
+## Set the game state and handle transitions
 func set_game_state(new_state: GameState) -> void:
 	var old_state = current_state
 	current_state = new_state
 	
+	_handle_state_transition(new_state)
+	
+	print("Game state changed: %s -> %s" % [
+		GameState.keys()[old_state],
+		GameState.keys()[new_state]
+	])
+
+
+## Handle state transitions
+func _handle_state_transition(new_state: GameState) -> void:
 	match new_state:
 		GameState.PAUSED:
 			Engine.time_scale = 0.0
@@ -44,8 +55,6 @@ func set_game_state(new_state: GameState) -> void:
 			get_tree().paused = false
 		GameState.GAME_OVER:
 			_handle_game_over()
-	
-	print("Game state changed: ", GameState.keys()[old_state], " -> ", GameState.keys()[new_state])
 
 
 ## Pause the game
@@ -61,12 +70,17 @@ func resume_game() -> void:
 ## Start a new game
 func start_new_game() -> void:
 	print("🎮 Starting new game...")
+	_reset_statistics()
+	set_game_state(GameState.PLAYING)
+	EventBus.player_respawned.emit()
+
+
+## Reset all game statistics
+func _reset_statistics() -> void:
 	total_play_time = 0.0
 	enemies_defeated = 0
 	quests_completed = 0
 	treasures_found = 0
-	set_game_state(GameState.PLAYING)
-	EventBus.player_respawned.emit()
 
 
 ## Handle game over
@@ -78,13 +92,24 @@ func _handle_game_over() -> void:
 
 ## Register the player reference
 func register_player(player_node: Node) -> void:
+	if not is_instance_valid(player_node):
+		push_error("Attempted to register invalid player node")
+		return
+	
 	player = player_node
 	print("✅ Player registered with GameManager")
 
 
-## Get the player reference
+## Get the player reference safely
 func get_player() -> Node:
+	if not is_instance_valid(player):
+		return null
 	return player
+
+
+## Check if player is valid
+func has_valid_player() -> bool:
+	return player != null and is_instance_valid(player)
 
 
 ## Increment enemies defeated counter
@@ -102,12 +127,24 @@ func increment_treasures_found() -> void:
 	treasures_found += 1
 
 
-## Get formatted play time
+## Get formatted play time as HH:MM:SS
 func get_formatted_play_time() -> String:
-	var hours = int(total_play_time) / 3600
-	var minutes = (int(total_play_time) % 3600) / 60
-	var seconds = int(total_play_time) % 60
+	var total_seconds = int(total_play_time)
+	var hours = total_seconds / 3600
+	var minutes = (total_seconds % 3600) / 60
+	var seconds = total_seconds % 60
 	return "%02d:%02d:%02d" % [hours, minutes, seconds]
+
+
+## Get game statistics dictionary
+func get_statistics() -> Dictionary:
+	return {
+		"play_time": total_play_time,
+		"play_time_formatted": get_formatted_play_time(),
+		"enemies_defeated": enemies_defeated,
+		"quests_completed": quests_completed,
+		"treasures_found": treasures_found,
+	}
 
 
 ## Quit the game
