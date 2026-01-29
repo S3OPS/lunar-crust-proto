@@ -10,6 +10,10 @@ An immersive 3D RPG game set in a Lord of the Rings inspired fantasy world. Emba
 
 👉 **[Getting Started Guide](docs/GETTING_STARTED.md)** — Complete installation, setup, and gameplay guide
 
+**Want to see what the game looks like?** Check out our visual documentation:
+
+👉 **[Screenshots Guide](docs/SCREENSHOTS_GUIDE.md)** — Detailed descriptions of the game's visuals and UI
+
 ## 📚 Why Godot?
 
 We've successfully migrated this project from Unity to Godot Engine. Learn more about our journey:
@@ -112,6 +116,8 @@ MiddleEarthRPG/
 ## 📖 Documentation
 
 - **[GETTING_STARTED.md](docs/GETTING_STARTED.md)** — Complete installation, setup, and gameplay guide
+- **[SCREENSHOTS_GUIDE.md](docs/SCREENSHOTS_GUIDE.md)** — Detailed visual descriptions of how the game looks
+- **[VISUAL_OVERVIEW.md](docs/VISUAL_OVERVIEW.md)** — Technical visual specifications and UI layout
 - **[GAME_DESIGN.md](docs/GAME_DESIGN.md)** — Complete game design document
 - **[ALTERNATIVE_ENGINES.md](docs/ALTERNATIVE_ENGINES.md)** — Story of our migration from Unity to Godot
 - **[REPOSITORY_STRUCTURE.md](docs/REPOSITORY_STRUCTURE.md)** — Codebase navigation guide
