@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyj3f7s2uwh0r"]
+
+[ext_resource type="Script" path="res://scenes/enemies/enemy_base.gd" id="1_enemy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_enemy"]
+radius = 0.4
+height = 1.6
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_enemy"]
+radius = 0.4
+height = 1.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_enemy"]
+albedo_color = Color(0.8, 0.2, 0.2, 1)
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_enemy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_enemy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_enemy")
+surface_material_override/0 = SubResource("StandardMaterial3D_enemy")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.5
+target_desired_distance = 0.5
+path_max_distance = 3.0
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+pixel_size = 0.01
+billboard = 1
+no_depth_test = true
+text = "Orc Scout"
+font_size = 32
+outline_size = 8
+outline_modulate = Color(0, 0, 0, 1)

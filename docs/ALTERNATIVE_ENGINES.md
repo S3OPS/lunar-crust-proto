@@ -511,35 +511,35 @@ If you've decided to use Godot Engine for this project, **building from scratch 
 
 Here's a practical 8-week plan to rebuild this RPG in Godot:
 
-#### **Week 1-2: Foundation**
-- ✅ Install Godot 4.x
-- ✅ Set up project structure (scenes/, scripts/, assets/)
-- ✅ Create player CharacterBody3D with movement and camera
-- ✅ Implement basic terrain/environment
+#### **Week 1-2: Foundation** ✅ COMPLETE
+- [x] Install Godot 4.x
+- [x] Set up project structure (scenes/, scripts/, assets/)
+- [x] Create player CharacterBody3D with movement and camera
+- [x] Implement basic terrain/environment
 - **Godot Advantage**: Movement controller is simpler than Unity's
 - **Reference**: Use Unity version to match movement speed and feel
 
-#### **Week 3-4: Core Systems**
-- ✅ Combat system with Area3D for hit detection
-- ✅ Health, stamina, and experience tracking
-- ✅ Basic enemy AI using NavigationAgent3D
-- ✅ Inventory system using Godot's Dictionary/Array
+#### **Week 3-4: Core Systems** 🎯 IN PROGRESS
+- [x] Combat system with Area3D for hit detection
+- [x] Health, stamina, and experience tracking
+- [x] Basic enemy AI using NavigationAgent3D
+- [ ] Inventory system using Godot's Dictionary/Array
 - **Godot Advantage**: Built-in Navigation3D is excellent
 - **Reference**: Copy combat balance values from Unity's config
 
 #### **Week 5-6: Content & Features**
-- ✅ Quest system using custom Resource classes
-- ✅ Dialogue system using Godot's Signal pattern
-- ✅ Equipment and loot with ItemResource classes
-- ✅ UI using Godot's Control nodes (much easier than Unity)
+- [ ] Quest system using custom Resource classes
+- [ ] Dialogue system using Godot's Signal pattern
+- [ ] Equipment and loot with ItemResource classes
+- [ ] UI using Godot's Control nodes (much easier than Unity)
 - **Godot Advantage**: UI system is more intuitive than Unity's
 - **Reference**: Replicate quest structure from Unity version
 
 #### **Week 7-8: Polish & World**
-- ✅ Day/night cycle using DirectionalLight3D
-- ✅ Weather system with GPUParticles3D
-- ✅ Procedural dungeons using Godot's RandomNumberGenerator
-- ✅ Save/load using Godot's FileAccess (simpler than Unity)
+- [ ] Day/night cycle using DirectionalLight3D
+- [ ] Weather system with GPUParticles3D
+- [ ] Procedural dungeons using Godot's RandomNumberGenerator
+- [ ] Save/load using Godot's FileAccess (simpler than Unity)
 - **Godot Advantage**: Lighter engine = faster iteration
 - **Reference**: Match visual effects from Unity screenshots
 

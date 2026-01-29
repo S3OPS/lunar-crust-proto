@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7l5eajkwu0y5"]
+
+[ext_resource type="PackedScene" uid="uid://cndx3jtslmx2e" path="res://scenes/player/player.tscn" id="1_k5kxq"]
+[ext_resource type="PackedScene" uid="uid://dgwrv5n2lsxl6" path="res://scenes/ui/hud.tscn" id="2_hud"]
+[ext_resource type="PackedScene" uid="uid://cyj3f7s2uwh0r" path="res://scenes/enemies/orc.tscn" id="3_enemy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_1"]
+sky_material = SubResource("ProceduralSkyMaterial_1")
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 2
+sky = SubResource("Sky_1")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1"]
+size = Vector2(100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1"]
+albedo_color = Color(0.3, 0.6, 0.3, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1"]
+size = Vector3(100, 0.1, 100)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_1"]
+vertices = PackedVector3Array(-50, 0.5, -50, -50, 0.5, 50, 50, 0.5, 50, 50, 0.5, -50)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 10, 0)
+shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_1")
+
+[node name="Ground" type="StaticBody3D" parent="NavigationRegion3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Ground"]
+mesh = SubResource("PlaneMesh_1")
+surface_material_override/0 = SubResource("StandardMaterial3D_1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Ground"]
+shape = SubResource("BoxShape3D_1")
+
+[node name="Player" parent="." instance=ExtResource("1_k5kxq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Orc1" parent="Enemies" instance=ExtResource("3_enemy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 5)
+
+[node name="Orc2" parent="Enemies" instance=ExtResource("3_enemy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, 8)
+
+[node name="Orc3" parent="Enemies" instance=ExtResource("3_enemy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -10)
+
+[node name="HUD" parent="." instance=ExtResource("2_hud")]
+
+[node name="SpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
