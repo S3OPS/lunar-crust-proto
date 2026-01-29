@@ -495,4 +495,5 @@ Enjoy your journey through Middle-earth!
 
 **Last Updated:** January 2026  
 **Godot Version:** 4.3+  
-**Document Version:** 1.0
+**Game Version:** Alpha v0.2  
+**Document Version:** 1.1
