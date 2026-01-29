@@ -6,6 +6,10 @@ extends Node
 var sample_quests_script = preload("res://scripts/data/sample_quests.gd")
 var sample_items_script = preload("res://scripts/data/sample_items.gd")
 var sample_dialogues_script = preload("res://scripts/data/sample_dialogues.gd")
+var sample_regions_script = preload("res://scripts/data/sample_regions.gd")
+var sample_waypoints_script = preload("res://scripts/data/sample_waypoints.gd")
+var sample_factions_script = preload("res://scripts/data/sample_factions.gd")
+var sample_regional_quests_script = preload("res://scripts/data/sample_regional_quests.gd")
 
 var item_database: Dictionary = {}
 var dialogue_database: Dictionary = {}
@@ -30,11 +34,38 @@ func _ready() -> void:
 		QuestManager.register_quest(quest)
 	print("✅ Registered %d quests" % quests.size())
 	
+	# Register Phase 5 regions
+	var regions = sample_regions_script.create_sample_regions()
+	for region in regions:
+		RegionManager.register_region(region)
+	print("✅ Registered %d regions" % regions.size())
+	
+	# Register Phase 5 waypoints
+	var waypoints = sample_waypoints_script.create_sample_waypoints()
+	for waypoint in waypoints:
+		FastTravelManager.register_waypoint(waypoint)
+	print("✅ Registered %d waypoints" % waypoints.size())
+	
+	# Register Phase 5 factions
+	var factions = sample_factions_script.create_sample_factions()
+	for faction in factions:
+		FactionManager.register_faction(faction)
+	print("✅ Registered %d factions" % factions.size())
+	
+	# Register Phase 5 regional quests
+	var regional_quests = sample_regional_quests_script.create_regional_quests()
+	for quest in regional_quests:
+		QuestManager.register_quest(quest)
+	print("✅ Registered %d regional quests" % regional_quests.size())
+	
 	# Give player some starting items for testing
 	_give_starting_items()
 	
 	# Start the first quest automatically
 	QuestManager.start_quest("first_steps")
+	
+	# Set starting region (The Shire)
+	RegionManager.enter_region("the_shire")
 	
 	print("✅ Game initialization complete!")
 

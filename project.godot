@@ -24,6 +24,9 @@ SaveManager="*res://scripts/autoload/save_manager.gd"
 QuestManager="*res://scripts/autoload/quest_manager.gd"
 InventoryManager="*res://scripts/autoload/inventory_manager.gd"
 DialogueManager="*res://scripts/autoload/dialogue_manager.gd"
+RegionManager="*res://scripts/autoload/region_manager.gd"
+FastTravelManager="*res://scripts/autoload/fast_travel_manager.gd"
+FactionManager="*res://scripts/autoload/faction_manager.gd"
 Constants="*res://scripts/utilities/constants.gd"
 
 [display]
