@@ -1024,6 +1024,5 @@ The original Unity implementation remains in the repository as archived referenc
 
 For more information:
 - [README.md](../README.md) - Current project status and quick start
-- [BEGINNERS_GUIDE.md](BEGINNERS_GUIDE.md) - Complete setup guide for Godot
-- [SETUP.md](SETUP.md) - Quick Godot installation instructions
+- [GETTING_STARTED.md](GETTING_STARTED.md) - Complete installation, setup, and configuration guide
 - [GAME_DESIGN.md](GAME_DESIGN.md) - Game design document

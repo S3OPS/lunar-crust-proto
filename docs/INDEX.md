@@ -15,18 +15,15 @@ Welcome to the Middle-earth Adventure RPG documentation! This index will help yo
    - Controls and game features
    - Migration information
 
-2. **[BEGINNERS_GUIDE.md](BEGINNERS_GUIDE.md)** 🆕 **COMPLETE BEGINNER? START HERE!**
-   - Step-by-step Godot installation
+2. **[GETTING_STARTED.md](GETTING_STARTED.md)** 🆕 **START HERE FOR SETUP!**
+   - Complete installation guide for Godot
+   - Step-by-step configuration instructions
    - How to open and run the project
-   - Game controls and tips
-   - Troubleshooting
+   - Game controls and gameplay tips
+   - Exporting the game as standalone executable
+   - Comprehensive troubleshooting
 
-3. **[SETUP.md](SETUP.md)** - Quick Godot setup guide
-   - Fast installation instructions
-   - Running the game
-   - Basic gameplay tips
-
-4. **[ALTERNATIVE_ENGINES.md](ALTERNATIVE_ENGINES.md)** 🎮 **MIGRATION STORY**
+3. **[ALTERNATIVE_ENGINES.md](ALTERNATIVE_ENGINES.md)** 🎮 **MIGRATION STORY**
    - Why we chose Godot
    - Migration journey and progress
    - Comparison with other engines
@@ -118,26 +115,20 @@ Welcome to the Middle-earth Adventure RPG documentation! This index will help yo
 
 ## 🎯 Quick Navigation by Goal
 
+### "I want to install and play the game"
+→ Read: **[GETTING_STARTED.md](GETTING_STARTED.md)** - Complete setup and installation guide
+
 ### "I want to understand what the game is about"
 → Read: **[README.md](../README.md)** then **[PLAYER_EXPERIENCE.md](PLAYER_EXPERIENCE.md)**
 
-### "I've never used Godot before"
-→ Read: **[BEGINNERS_GUIDE.md](BEGINNERS_GUIDE.md)** - Complete step-by-step guide for absolute beginners
-
 ### "I want to know why we chose Godot"
 → Read: **[ALTERNATIVE_ENGINES.md](ALTERNATIVE_ENGINES.md)** - Migration story and engine comparison
-
-### "I want to play the game"
-→ Read: **[SETUP.md](SETUP.md)** - Quick installation guide
 
 ### "I want to understand the game design"
 → Read: **[GAME_DESIGN.md](GAME_DESIGN.md)** - Core mechanics and systems
 
 ### "I want to understand the codebase"
 → Read: **[REPOSITORY_STRUCTURE.md](REPOSITORY_STRUCTURE.md)** for Godot project structure
-
-### "I want to understand the game design"
-→ Read: **[GAME_DESIGN.md](GAME_DESIGN.md)** - Engine-agnostic game design principles
 
 ### "I want to add a new feature"
 → Read: **[REPOSITORY_STRUCTURE.md](REPOSITORY_STRUCTURE.md)** for Godot architecture, then work in `scenes/` and `scripts/`
@@ -151,7 +142,7 @@ Welcome to the Middle-earth Adventure RPG documentation! This index will help yo
 
 ### Active Godot Documentation
 - **Total Documents:** 5 active guides
-- **Focus:** Getting started, setup, and migration story
+- **Focus:** Getting started, setup, game design, and migration story
 - **Status:** Up-to-date for Godot 4.3+
 
 ### Archived Unity Documentation
@@ -221,15 +212,17 @@ The documentation is now focused on the **Godot implementation**. When contribut
 - Combat encounters
 - Visual atmosphere description
 
-### SETUP.md
-**Purpose:** Installation and gameplay guide  
-**Length:** ~150 lines (estimated)  
-**Best for:** New users, players, testers  
+### GETTING_STARTED.md
+**Purpose:** Complete installation, setup, and configuration guide  
+**Length:** ~500 lines  
+**Best for:** New users, players, anyone setting up the game  
 **Key sections:**
-- Installation steps
-- Gameplay guide
-- Controls
-- Tips and strategies
+- Complete Godot installation (Windows/macOS/Linux)
+- Project import and configuration
+- Running the game
+- Game controls and gameplay
+- Exporting standalone executables
+- Comprehensive troubleshooting
 
 ### CHANGELOG.md
 **Purpose:** Version history  
