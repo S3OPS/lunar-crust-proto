@@ -7,6 +7,7 @@ var _fps_history_size: int = 60  # 1 second at 60fps
 var _frame_time_history: Array[float] = []
 var _fps_sum: float = 0.0
 var _frame_time_sum: float = 0.0
+var _samples_since_recalc: int = 0
 
 # Cached metrics
 var average_fps: float = 60.0
@@ -32,6 +33,7 @@ func _update_metrics(delta: float) -> void:
 	_frame_time_history.append(delta)
 	_fps_sum += current_fps
 	_frame_time_sum += delta
+	_samples_since_recalc += 1
 	
 	# Maintain history size
 	if _fps_history.size() > _fps_history_size:
@@ -40,11 +42,23 @@ func _update_metrics(delta: float) -> void:
 	
 	# Calculate metrics
 	if _fps_history.size() > 0:
+		if _samples_since_recalc >= _fps_history_size:
+			_recalculate_sums()
+			_samples_since_recalc = 0
 		var history_size = _fps_history.size()
 		average_fps = _fps_sum / history_size
 		min_fps = _fps_history.min()
 		max_fps = _fps_history.max()
 		average_frame_time = _frame_time_sum / history_size
+
+
+## Recalculate rolling sums to reduce floating-point drift
+func _recalculate_sums() -> void:
+	_fps_sum = 0.0
+	_frame_time_sum = 0.0
+	for index in range(_fps_history.size()):
+		_fps_sum += _fps_history[index]
+		_frame_time_sum += _frame_time_history[index]
 
 
 ## Get formatted performance stats
