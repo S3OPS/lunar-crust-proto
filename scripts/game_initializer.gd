@@ -13,6 +13,7 @@ var sample_regional_quests_script = preload("res://scripts/data/sample_regional_
 var sample_recipes_script = preload("res://scripts/data/sample_recipes.gd")
 var sample_specializations_script = preload("res://scripts/data/sample_specializations.gd")
 var sample_companions_script = preload("res://scripts/data/sample_companions.gd")
+var sample_seasonal_events_script = preload("res://scripts/data/sample_seasonal_events.gd")
 
 var item_database: Dictionary = {}
 var dialogue_database: Dictionary = {}
@@ -78,6 +79,12 @@ func _ready() -> void:
 	for companion in companions:
 		CompanionManager.register_companion(companion)
 	print("✅ Registered %d companions" % companions.size())
+	
+	# Register Phase 7 seasonal events
+	var events = sample_seasonal_events_script.create_sample_events()
+	for event in events:
+		SeasonalEventManager.register_event(event)
+	print("✅ Registered %d seasonal events" % events.size())
 	
 	# Give player some starting items for testing
 	_give_starting_items()
