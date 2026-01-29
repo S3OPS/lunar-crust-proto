@@ -212,15 +212,17 @@ The documentation is now focused on the **Godot implementation**. When contribut
 - Combat encounters
 - Visual atmosphere description
 
-### SETUP.md
-**Purpose:** Installation and gameplay guide  
-**Length:** ~150 lines (estimated)  
-**Best for:** New users, players, testers  
+### GETTING_STARTED.md
+**Purpose:** Complete installation, setup, and configuration guide  
+**Length:** ~500 lines  
+**Best for:** New users, players, anyone setting up the game  
 **Key sections:**
-- Installation steps
-- Gameplay guide
-- Controls
-- Tips and strategies
+- Complete Godot installation (Windows/macOS/Linux)
+- Project import and configuration
+- Running the game
+- Game controls and gameplay
+- Exporting standalone executables
+- Comprehensive troubleshooting
 
 ### CHANGELOG.md
 **Purpose:** Version history  

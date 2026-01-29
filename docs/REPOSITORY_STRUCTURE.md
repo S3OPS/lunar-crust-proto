@@ -47,10 +47,10 @@ MiddleEarthRPG/
 ├── assets/                    # Game assets (models, textures, audio)
 │
 ├── docs/                      # Documentation
-│   ├── README.md             # This file
-│   ├── BEGINNERS_GUIDE.md    # Godot setup guide
-│   ├── SETUP.md              # Quick start
+│   ├── GETTING_STARTED.md    # Complete setup and installation guide
 │   ├── ALTERNATIVE_ENGINES.md # Migration story
+│   ├── GAME_DESIGN.md        # Game design document
+│   ├── REPOSITORY_STRUCTURE.md # This file
 │   └── [Archived Unity docs...]
 │
 └── [Unity Legacy Files]       # See "Archived Unity Structure" below
@@ -104,15 +104,12 @@ Assets/                        # ARCHIVED - Unity C# Scripts
 │   └── ...                         # Other Unity settings
 │
 ├── docs/                           # Comprehensive documentation
+│   ├── GETTING_STARTED.md           # Installation & setup guide
 │   ├── ENHANCEMENT_PLAN.md         # Detailed enhancement roadmap
 │   ├── REPOSITORY_STRUCTURE.md     # This file
 │   ├── GAME_DESIGN.md              # Complete game design document
 │   ├── IMPLEMENTATION_SUMMARY.md   # Implementation details
-│   ├── PLAYER_EXPERIENCE.md        # Player walkthrough
-│   └── SETUP.md                    # Installation & setup guide
-│
-├── tools/
-│   └── install.ps1                 # One-command installation script
+│   └── PLAYER_EXPERIENCE.md        # Player walkthrough
 │
 ├── README.md                       # Main project README
 ├── CHANGELOG.md                    # Version history & changes
@@ -380,7 +377,7 @@ JSON-based configuration system:
 ### Player-Facing Documentation
 
 - **README.md** - Main overview, features, controls, quick start
-- **docs/SETUP.md** - Installation guide, gameplay tips, troubleshooting
+- **docs/GETTING_STARTED.md** - Complete installation, setup, and gameplay guide
 - **docs/PLAYER_EXPERIENCE.md** - Visual walkthrough of gameplay
 
 ### Developer Documentation

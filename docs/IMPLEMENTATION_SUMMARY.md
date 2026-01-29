@@ -135,7 +135,7 @@ Real-time display showing:
 
 #### Updated Files
 1. **README.md** - Game overview, features, quest guide
-2. **docs/SETUP.md** - Installation, gameplay guide, tips
+2. **docs/GETTING_STARTED.md** - Complete installation, setup, and gameplay guide
 3. **docs/GAME_DESIGN.md** - Complete technical documentation
 
 #### New Documentation
