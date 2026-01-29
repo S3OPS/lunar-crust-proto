@@ -44,6 +44,12 @@ func _ready() -> void:
 	print("✅ Player initialized: ", stats.character_name)
 
 
+## Handle taking damage from enemies
+func take_damage(damage: float) -> void:
+	if stats:
+		stats.take_damage(damage)
+
+
 func _input(event: InputEvent) -> void:
 	# Handle mouse movement for camera
 	if event is InputEventMouseMotion and mouse_captured:
