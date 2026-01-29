@@ -13,7 +13,7 @@ Welcome! This guide will walk you through every step to get this game running on
 6. [Step 4: Play the Game](#step-4-play-the-game)
 7. [Troubleshooting](#troubleshooting)
 8. [Game Controls](#game-controls)
-9. [Why Godot?](#why-godot)
+9. [Exporting the Game](#exporting-the-game-creating-a-standalone-executable)
 
 ---
 
@@ -23,7 +23,7 @@ Middle-earth Adventure RPG is a 3D role-playing game inspired by The Lord of the
 
 This is a **Godot project**, which means it was made using a free and open-source game engine called Godot. To play the game, you need to download Godot first (it's completely free, no account needed!).
 
-### 🎮 Why Godot and Not Unity?
+### 🎮 Why We Chose Godot
 
 **This project was migrated from Unity to Godot!** We chose Godot because:
 - ✅ **100% Free** - No subscriptions, no royalties, ever
@@ -42,7 +42,7 @@ Before we start, make sure you have:
 | Requirement | Details |
 |-------------|---------|
 | **Computer** | Windows 10, Windows 11, macOS, or Linux |
-| **Internet** | To download Godot (about 50-100 MB total) |
+| **Internet** | To download Godot (about 80 MB) and game files |
 | **Disk Space** | At least 500 MB of free space |
 | **Time** | About 5-10 minutes for everything |
 
@@ -65,7 +65,7 @@ Godot Engine is a free, lightweight game engine that's super easy to install. Th
 3. **Download Godot 4.3 (Standard version)**
    - Look for the **"Godot Engine - Standard version"** button under "4.3 Stable"
    - Click **"Download 64-bit"** for Windows
-   - A file will start downloading (about 50-80 MB - very small!)
+   - A file will start downloading (about 80 MB - very small!)
    - Wait for the download to finish (you'll see a progress indicator)
 
 4. **Extract and Run Godot** (No installation needed!)
@@ -95,7 +95,7 @@ Godot Engine is a free, lightweight game engine that's super easy to install. Th
 3. **Download Godot 4.3**
    - Look for **"Godot Engine - Standard version"** under "4.3 Stable"
    - Click **"Download Universal"** for macOS
-   - Wait for the download to complete (about 50-80 MB)
+   - Wait for the download to complete (about 80 MB)
 
 4. **Extract and Run Godot**
    - Open **Finder** (the blue smiling face icon in your Dock)
@@ -274,8 +274,8 @@ If pressing Play doesn't show any content:
 **What to do:**
 - In Godot, go to **Project → Project Settings → Rendering**
 - Under "Quality", try lowering some settings
-- Or press F7 in-game to access optimization utilities
 - Make sure your graphics drivers are up to date
+- Try lowering the resolution in the project settings
 
 ### Godot won't open or crashes
 
@@ -374,26 +374,19 @@ Once the game is running, here's how to play:
 | **Jump** | Spacebar |
 | **Attack** | Left mouse button |
 | **Special ability** | Right mouse button |
-| **Interact** | Walk into NPCs, chests, or locations |
+| **Settings Menu** | ESC key |
+
+### Coming Soon
+
+These features are planned for future releases:
+
+| Feature | Planned Control |
+|---------|----------------|
 | **Quest Journal** | J key |
 | **Character Sheet** | C key |
+| **Inventory** | I key |
 | **World Map** | M key |
-| **Settings Menu** | ESC or O key |
-
-### Advanced Controls (Optional)
-
-These are developer and testing tools - you don't need these to play the game:
-
-| Action | Control |
-|--------|---------|
-| **Performance Monitor** | F3 key |
-| **Release Checklist** | F4 key |
-| **Feedback System** | F5 key |
-| **Screenshot Tool** | F6 key (F12 for quick capture) |
-| **Optimization Utils** | F7 key |
-| **Beta Manager** | F8 key |
-| **Release Manager** | F9 key |
-| **Support Tools** | F10 key |
+| **Interact with NPCs** | E key or walk into them |
 
 ---
 
