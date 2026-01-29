@@ -8,7 +8,7 @@ All notable changes and enhancements to this project.
 
 ---
 
-## [0.2.0] - Godot Alpha v0.2 (January 29, 2026)
+## [0.2.0] - Godot Alpha v0.2 (January 2026)
 
 ### ✅ Phase 2: Core Systems Complete
 
