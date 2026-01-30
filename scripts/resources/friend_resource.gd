@@ -19,7 +19,7 @@ class_name FriendResource
 func _init(
 	p_id: String = "",
 	p_name: String = ""
-):
+) -> void:
 	friend_id = p_id
 	friend_name = p_name
 	friendship_date = Time.get_date_string_from_system()
