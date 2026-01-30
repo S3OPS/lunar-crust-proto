@@ -56,6 +56,7 @@ func start_quest(quest_id: String) -> bool:
 ## Complete a quest
 func complete_quest(quest_id: String) -> void:
 	if not active_quests.has(quest_id):
+		push_warning("Cannot complete inactive quest: " + quest_id)
 		return
 	
 	var quest = active_quests[quest_id]
@@ -64,20 +65,22 @@ func complete_quest(quest_id: String) -> void:
 	active_quests.erase(quest_id)
 	
 	# Grant rewards
-	if quest.xp_reward > 0:
+	if quest.xp_reward > 0 and GameManager:
 		GameManager.add_experience(quest.xp_reward)
 	
-	if quest.gold_reward > 0:
+	if quest.gold_reward > 0 and GameManager:
 		GameManager.add_gold(quest.gold_reward)
 	
 	for item_id in quest.item_rewards:
-		EventBus.item_rewarded.emit(item_id)
+		if not item_id.is_empty():
+			EventBus.item_rewarded.emit(item_id)
 	
 	EventBus.quest_completed.emit(quest_id, quest.quest_name)
 
 ## Fail a quest
 func fail_quest(quest_id: String) -> void:
 	if not active_quests.has(quest_id):
+		push_warning("Cannot fail inactive quest: " + quest_id)
 		return
 	
 	var quest = active_quests[quest_id]
