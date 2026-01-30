@@ -20,8 +20,6 @@ func _ready() -> void:
 	
 	# Start hidden
 	hide()
-	visible = false
-
 
 func _input(event: InputEvent) -> void:
 	if visible and event.is_action_pressed("ui_accept"):
