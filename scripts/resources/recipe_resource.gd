@@ -34,6 +34,9 @@ func _init(
 	category = p_category
 
 func add_ingredient(item_id: String, quantity: int) -> void:
+	if quantity <= 0:
+		push_error("Ingredient quantity must be positive: %s = %d" % [item_id, quantity])
+		return
 	ingredients[item_id] = quantity
 
 func has_required_ingredients(inventory_check: Callable) -> bool:

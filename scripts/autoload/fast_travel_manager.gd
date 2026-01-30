@@ -101,6 +101,11 @@ func can_travel_to(waypoint_id: String) -> Dictionary:
 	
 	var waypoint: WaypointResource = waypoints[waypoint_id]
 	
+	# Null safety check
+	if not waypoint:
+		result["reason"] = "Waypoint data is invalid"
+		return result
+	
 	# Check gold cost
 	if waypoint.travel_cost > 0:
 		if GameManager.gold < waypoint.travel_cost:
@@ -110,7 +115,7 @@ func can_travel_to(waypoint_id: String) -> Dictionary:
 	# Check mount requirement (for future mount system)
 	if waypoint.requires_mount:
 		# Check if player has an active mount
-		if MountManager and MountManager.get_active_mount() == null:
+		if not MountManager or MountManager.get_active_mount() == null:
 			result["reason"] = "Requires a mount"
 			return result
 	

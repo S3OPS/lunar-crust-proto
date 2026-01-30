@@ -13,9 +13,15 @@ signal crafting_failed(recipe_id: String, reason: String)
 var recipes: Dictionary = {}
 var discovered_recipes: Array[String] = []
 var crafting_skill: int = 0
+var game_initializer: Node = null
 
 
 func _ready() -> void:
+	# Cache the GameInitializer reference to avoid fragile node path lookups
+	game_initializer = get_node_or_null("/root/Main/GameInitializer")
+	if game_initializer == null:
+		push_error("CraftingManager: Failed to find GameInitializer node at /root/Main/GameInitializer")
+	
 	if OS.is_debug_build():
 		print("🔨 CraftingManager initialized")
 
@@ -66,6 +72,11 @@ func can_craft(recipe_id: String) -> Dictionary:
 	
 	var recipe: RecipeResource = recipes[recipe_id]
 	
+	# Null safety check - ensure recipe exists
+	if recipe == null:
+		result["reason"] = "Recipe data corrupted or missing"
+		return result
+	
 	# Check level requirement
 	if GameManager.player_stats:
 		if GameManager.player_stats.level < recipe.required_level:
@@ -114,11 +125,24 @@ func craft_item(recipe_id: String) -> bool:
 	# Instant crafting for now - could be enhanced with crafting time/animation
 	
 	# Add output item to inventory
-	var game_initializer: Node = get_node_or_null("/root/Main/GameInitializer")
-	if game_initializer and game_initializer.has_method("get_item"):
-		var output_item = game_initializer.get_item(recipe.output_item_id)
-		if output_item:
-			InventoryManager.add_item(output_item, recipe.output_quantity)
+	# Use cached GameInitializer reference instead of fragile node path
+	if game_initializer == null:
+		push_error("CraftingManager: GameInitializer not available for crafting completion")
+		crafting_failed.emit(recipe_id, "Game system error")
+		return false
+	
+	if not game_initializer.has_method("get_item"):
+		push_error("CraftingManager: GameInitializer missing get_item method")
+		crafting_failed.emit(recipe_id, "Game system error")
+		return false
+	
+	var output_item = game_initializer.get_item(recipe.output_item_id)
+	if output_item == null:
+		push_error("CraftingManager: Failed to create output item - %s" % recipe.output_item_id)
+		crafting_failed.emit(recipe_id, "Failed to create output item")
+		return false
+	
+	InventoryManager.add_item(output_item, recipe.output_quantity)
 	
 	crafting_completed.emit(recipe_id, recipe.output_item_id, recipe.output_quantity)
 	

@@ -77,12 +77,12 @@ func get_discovered_regions() -> Array[String]:
 
 func can_enter_region(region_id: String) -> bool:
 	"""Check if player meets requirements to enter a region"""
-	var region = get_region(region_id)
+	var region: RegionResource = get_region(region_id)
 	if region == null:
 		return false
 	
 	# Check level requirement
-	if GameManager.player_level < region.required_level:
+	if GameManager and GameManager.player_level < region.required_level:
 		return false
 	
 	# Check faction requirement

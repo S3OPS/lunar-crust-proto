@@ -26,7 +26,7 @@ func add_reputation(faction_id: String, amount: int) -> void:
 		push_error("Faction not found: " + faction_id)
 		return
 	
-	var faction = factions[faction_id]
+	var faction: FactionResource = factions[faction_id]
 	var old_tier = faction.reputation_tier
 	var old_reputation = faction.current_reputation
 	
@@ -109,5 +109,8 @@ func load_data(data: Dictionary) -> void:
 	for faction_id in faction_data:
 		if faction_id in factions:
 			var saved = faction_data[faction_id]
-			factions[faction_id].current_reputation = saved.get("reputation", 0)
-			factions[faction_id].update_reputation_tier()
+			if saved is Dictionary and saved.has("reputation"):
+				factions[faction_id].current_reputation = saved.get("reputation", 0)
+				factions[faction_id].update_reputation_tier()
+			else:
+				push_error("Invalid faction data for ", faction_id)
