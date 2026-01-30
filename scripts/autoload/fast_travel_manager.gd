@@ -180,9 +180,13 @@ func set_unlocked_waypoints(waypoint_ids: Array) -> void:
 	for id in waypoint_ids:
 		if id is String:
 			unlocked_waypoints.append(id)
-			# Update waypoint status
+			# Update waypoint status and ensure it's also marked as discovered
 			if id in waypoints:
 				waypoints[id].unlocked = true
+				waypoints[id].discovered = true
+				# Add to discovered list if not already present
+				if id not in discovered_waypoints:
+					discovered_waypoints.append(id)
 
 
 ## Get all waypoints in a specific region

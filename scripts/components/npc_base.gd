@@ -65,12 +65,19 @@ func highlight_npc(enabled: bool) -> void:
 	if not mesh_instance:
 		return
 	
-	var material = mesh_instance.get_active_material(0)
+	# Get the current material (either override or base material)
+	var material = mesh_instance.get_surface_override_material(0)
+	if material == null:
+		material = mesh_instance.get_active_material(0)
+	
 	if material and material is StandardMaterial3D:
-		# Clone material to avoid mutating shared resource
-		if mesh_instance.get_surface_override_material_count() == 0:
+		# Clone material on first use to avoid mutating shared resource
+		if mesh_instance.get_surface_override_material(0) == null:
 			material = material.duplicate()
 			mesh_instance.set_surface_override_material(0, material)
+		else:
+			# Use the already cloned override material
+			material = mesh_instance.get_surface_override_material(0)
 		
 		if enabled:
 			# Add a slight glow/brightness

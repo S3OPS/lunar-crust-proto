@@ -265,18 +265,22 @@ func save_game(slot_index: int) -> bool:
 		# Save companion states as dictionary
 		for companion_id in CompanionManager.companions:
 			var companion = CompanionManager.companions[companion_id]
-			if companion and companion.is_hired:
-				save_data.companion_relationships[companion_id] = {
-					"loyalty": companion.loyalty,
-					"is_hired": companion.is_hired
-				}
+			if companion and typeof(companion) == TYPE_OBJECT:
+				# Check if properties exist before accessing
+				if companion.get("is_hired"):
+					save_data.companion_relationships[companion_id] = {
+						"loyalty": companion.get("loyalty") if companion.get("loyalty") != null else 50,
+						"is_hired": companion.is_hired
+					}
 	
 	# Save faction data
 	if FactionManager:
 		for faction_id in FactionManager.factions:
 			var faction = FactionManager.factions[faction_id]
-			if faction:
-				save_data.faction_reputations[faction_id] = faction.current_reputation
+			if faction and typeof(faction) == TYPE_OBJECT:
+				# Check if property exists before accessing
+				if faction.get("current_reputation") != null:
+					save_data.faction_reputations[faction_id] = faction.current_reputation
 	
 	# Save crafting data
 	if CraftingManager and CraftingManager.has_method("get_known_recipes"):
@@ -464,17 +468,22 @@ func _apply_save_data(save_data: SaveData) -> void:
 			if companion_id in CompanionManager.companions:
 				var companion = CompanionManager.companions[companion_id]
 				var saved_data = save_data.companion_relationships[companion_id]
-				if companion and saved_data is Dictionary:
-					companion.loyalty = saved_data.get("loyalty", companion.loyalty)
-					companion.is_hired = saved_data.get("is_hired", false)
+				if companion and typeof(companion) == TYPE_OBJECT and saved_data is Dictionary:
+					# Use set() method if available, otherwise try direct assignment
+					if companion.get("loyalty") != null:
+						companion.set("loyalty", saved_data.get("loyalty", companion.get("loyalty")))
+					if companion.get("is_hired") != null:
+						companion.set("is_hired", saved_data.get("is_hired", false))
 	
 	# Restore faction data
 	if FactionManager:
 		for faction_id in save_data.faction_reputations:
 			if faction_id in FactionManager.factions:
 				var faction = FactionManager.factions[faction_id]
-				if faction:
-					faction.current_reputation = save_data.faction_reputations[faction_id]
+				if faction and typeof(faction) == TYPE_OBJECT:
+					# Use set() method if property exists
+					if faction.get("current_reputation") != null:
+						faction.set("current_reputation", save_data.faction_reputations[faction_id])
 	
 	# Restore crafting data
 	if CraftingManager and CraftingManager.has_method("set_known_recipes"):

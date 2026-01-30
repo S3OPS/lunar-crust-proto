@@ -27,6 +27,7 @@ func get_random_drops() -> Array[Dictionary]:
 			push_error("Invalid drop_chance in loot entry: %f (must be 0.0-1.0)" % drop_chance)
 			drop_chance = clampf(drop_chance, 0.0, 1.0)
 		
+		# Use the validated/clamped drop_chance
 		if randf() <= drop_chance:
 			# Validate quantity_min <= quantity_max before randi_range
 			if entry.quantity_min > entry.quantity_max:

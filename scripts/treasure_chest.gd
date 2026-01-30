@@ -99,13 +99,8 @@ func _play_open_animation() -> void:
 		push_warning("TreasureChest: Lid node not found, cannot play animation")
 		return
 	
-	# Kill any existing tween to prevent resource leak
-	var existing_tween = get_tree().get_processed_tweens()
-	for tween in existing_tween:
-		if tween.is_valid() and tween.is_running():
-			# Check if this tween is animating our lid
-			tween.kill()
-	
+	# Simply create the tween - Godot manages tween lifecycle automatically
+	# The is_opened flag in open_chest() prevents multiple calls
 	var tween = create_tween()
 	tween.tween_property(lid, "rotation_degrees:x", -90, 0.5)
 
