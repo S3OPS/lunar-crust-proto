@@ -160,6 +160,10 @@ func get_quest(quest_id: String) -> QuestResource:
 		return available_quests[quest_id]
 	return null
 
+## Check if quest is active
+func is_quest_active(quest_id: String) -> bool:
+	return quest_id in active_quests
+
 ## Check if quest is completed
 func is_quest_completed(quest_id: String) -> bool:
 	return quest_id in completed_quests
