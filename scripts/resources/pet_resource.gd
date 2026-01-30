@@ -21,7 +21,7 @@ func _init(
 	p_id: String = "",
 	p_name: String = "",
 	p_type: String = "common"
-):
+) -> void:
 	pet_id = p_id
 	pet_name = p_name
 	pet_type = p_type
