@@ -160,9 +160,13 @@ func retrieve_item(house_id: String, item_id: String, quantity: int) -> bool:
 		house.stored_items.erase(item_id)
 	
 	# Add to inventory
-	var item = get_node("/root/Main/GameInitializer").get_item(item_id)
-	if item:
-		InventoryManager.add_item(item, quantity)
+	var game_initializer = get_node_or_null("/root/Main/GameInitializer")
+	if game_initializer:
+		var item = game_initializer.get_item(item_id)
+		if item:
+			InventoryManager.add_item(item, quantity)
+	else:
+		push_warning("HousingManager: GameInitializer not found, cannot retrieve item")
 	
 	item_retrieved.emit(house_id, item_id, quantity)
 	print("Retrieved ", quantity, "x ", item_id)
