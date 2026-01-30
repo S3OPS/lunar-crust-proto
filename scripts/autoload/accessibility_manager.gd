@@ -143,6 +143,8 @@ func _apply_volume(bus_name: String, volume: float) -> void:
 	var bus_idx: int = AudioServer.get_bus_index(bus_name)
 	if bus_idx >= 0:
 		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(volume))
+	else:
+		push_warning("AccessibilityManager: Audio bus '%s' not found (invalid index: %d)" % [bus_name, bus_idx])
 
 
 ## Apply mouse sensitivity setting

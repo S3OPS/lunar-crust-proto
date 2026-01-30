@@ -60,7 +60,10 @@ func unlock_ability(ability_id: String) -> bool:
 		push_warning("SpecializationManager: No specialization chosen")
 		return false
 	
-	var spec: SpecializationResource = specializations[current_specialization]
+	var spec: SpecializationResource = specializations.get(current_specialization)
+	if spec == null:
+		push_error("SpecializationManager: Current specialization not found - %s" % current_specialization)
+		return false
 	
 	if ability_id not in spec.abilities:
 		push_warning("SpecializationManager: Ability not in specialization - %s" % ability_id)

@@ -33,6 +33,8 @@ func _check_boss_spawns() -> void:
 	"""Check if any bosses should spawn"""
 	for boss_id in world_bosses:
 		var boss = world_bosses[boss_id]
+		if not active_boss.is_empty():
+			continue  # A boss is already active
 		if boss.can_spawn() and randf() < 0.1:  # 10% chance per check
 			spawn_boss(boss_id)
 
