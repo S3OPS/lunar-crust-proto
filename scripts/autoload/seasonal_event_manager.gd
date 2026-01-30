@@ -78,7 +78,8 @@ func get_active_events() -> Array[SeasonalEventResource]:
 	"""Get all currently active events"""
 	var result: Array[SeasonalEventResource] = []
 	for event_id in active_events:
-		result.append(events[event_id])
+		if event_id in events:
+			result.append(events[event_id])
 	return result
 
 func get_event_multipliers() -> Dictionary:

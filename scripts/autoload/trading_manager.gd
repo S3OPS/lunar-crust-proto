@@ -75,7 +75,7 @@ func add_gold_to_trade(trade_id: String, gold_amount: int, is_sender: bool) -> b
 	var trade: TradeOfferResource = active_trades[trade_id]
 	
 	# Verify player has enough gold
-	if GameManager.gold < gold_amount:
+	if not GameManager or GameManager.gold < gold_amount:
 		if OS.is_debug_build():
 			print("TradingManager: Not enough gold")
 		return false
@@ -185,10 +185,23 @@ func _execute_trade(trade: TradeOfferResource) -> bool:
 	for item_id in trade.receiver_items:
 		var quantity: int = trade.receiver_items[item_id]
 		var game_initializer: Node = get_node_or_null("/root/Main/GameInitializer")
-		if game_initializer and game_initializer.has_method("get_item"):
-			var item = game_initializer.get_item(item_id)
-			if item:
-				InventoryManager.add_item(item, quantity)
+		if not game_initializer:
+			if OS.is_debug_build():
+				print("TradingManager: GameInitializer not found at /root/Main/GameInitializer")
+			return false
+		
+		if not game_initializer.has_method("get_item"):
+			if OS.is_debug_build():
+				print("TradingManager: GameInitializer does not have get_item method")
+			return false
+		
+		var item = game_initializer.get_item(item_id)
+		if not item:
+			if OS.is_debug_build():
+				print("TradingManager: Failed to get item with id: %s" % item_id)
+			return false
+		
+		InventoryManager.add_item(item, quantity)
 	
 	# Add gold to sender from receiver
 	if trade.receiver_gold > 0:

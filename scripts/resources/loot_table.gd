@@ -15,7 +15,18 @@ func get_random_drops() -> Array[Dictionary]:
 	
 	# Roll for each loot entry
 	for entry in loot_entries:
+		# Validate entry has required properties
+		if not (entry is Dictionary or entry is LootEntry):
+			continue
+		if not (entry.has("drop_chance") if entry is Dictionary else true):
+			continue
+		
 		if randf() <= entry.drop_chance:
+			# Validate quantity_min <= quantity_max before randi_range
+			if entry.quantity_min > entry.quantity_max:
+				push_error("Invalid quantity range in loot entry: %d > %d" % [entry.quantity_min, entry.quantity_max])
+				continue
+			
 			var quantity = randi_range(entry.quantity_min, entry.quantity_max)
 			drops.append({
 				"item_id": entry.item_id,

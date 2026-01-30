@@ -23,7 +23,7 @@ func _init(
 	p_id: String = "",
 	p_name: String = "",
 	p_type: String = "horse"
-):
+) -> void:
 	mount_id = p_id
 	mount_name = p_name
 	mount_type = p_type

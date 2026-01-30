@@ -90,10 +90,12 @@ func _ready() -> void:
 	_give_starting_items()
 	
 	# Start the first quest automatically
-	QuestManager.start_quest("first_steps")
+	if QuestManager != null:
+		QuestManager.start_quest("first_steps")
 	
 	# Set starting region (The Shire)
-	RegionManager.enter_region("the_shire")
+	if RegionManager != null:
+		RegionManager.enter_region("the_shire")
 	
 	print("✅ Game initialization complete!")
 

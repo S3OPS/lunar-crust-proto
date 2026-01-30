@@ -164,7 +164,7 @@ func get_player_rating(player_id: String) -> int:
 	"""Get player's arena rating"""
 	return player_ratings.get(player_id, STARTING_RATING)
 
-func get_leaderboard(limit: int = 100) -> Array:
+func get_leaderboard(limit: int = 100) -> Array[Dictionary]:
 	"""Get top players on leaderboard"""
 	return leaderboard.slice(0, min(limit, leaderboard.size()))
 

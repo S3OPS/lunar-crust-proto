@@ -81,13 +81,14 @@ func purchase_mount(mount_id: String) -> bool:
 func equip_mount(mount_id: String) -> bool:
 	"""Equip a mount"""
 	if mount_id not in owned_mounts:
-		print("Mount not owned")
+		push_error("Mount not owned")
 		return false
 	
 	active_mount = mount_id
 	mount_equipped.emit(mount_id)
 	
-	print("Mount equipped: ", mounts[mount_id].mount_name)
+	var mount = get_mount(mount_id)
+	print("Mount equipped: ", mount.mount_name)
 	return true
 
 func unequip_mount() -> void:

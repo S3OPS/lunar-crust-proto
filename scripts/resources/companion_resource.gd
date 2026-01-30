@@ -32,7 +32,7 @@ func _init(
 	p_id: String = "",
 	p_name: String = "",
 	p_class: String = "warrior"
-):
+) -> void:
 	companion_id = p_id
 	companion_name = p_name
 	companion_class = p_class

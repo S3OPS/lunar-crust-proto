@@ -84,7 +84,10 @@ func get_setting(setting_name: String) -> float:
 		return 1.0
 	
 	var settings = difficulty_settings[current_difficulty]
-	return settings.get(setting_name, 1.0)
+	var result = settings.get(setting_name, 1.0)
+	if result == 1.0 and not settings.has(setting_name):
+		push_warning("DifficultyManager: Setting '%s' not found, returning default value 1.0" % setting_name)
+	return result
 
 func get_enemy_health_multiplier() -> float:
 	return get_setting("enemy_health_multiplier")

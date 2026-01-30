@@ -148,7 +148,7 @@ static func create_regional_quests() -> Array[QuestResource]:
 	
 	# Quest 9: The Ring's Pull
 	var ring_quest = QuestRes.new()
-	ring_quest.quest_id = "rings_pull"
+	ring_quest.quest_id = "ring_pull"
 	ring_quest.quest_name = "The Ring's Pull"
 	ring_quest.description = "The One Ring's influence grows stronger as you approach Mount Doom. You must resist its corruption."
 	ring_quest.level_requirement = 12

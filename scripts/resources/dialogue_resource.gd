@@ -55,14 +55,14 @@ func _parse_lines_data() -> void:
 		lines.append(line)
 
 ## Get a specific dialogue line
-func get_line(index: int):
+func get_line(index: int) -> DialogueLine:
 	if index < 0 or index >= lines.size():
 		push_warning("DialogueResource: Invalid line index %d (total lines: %d)" % [index, lines.size()])
 		return null
 	return lines[index]
 
 ## Get the first line
-func get_first_line():
+func get_first_line() -> DialogueLine:
 	if lines.is_empty():
 		push_warning("DialogueResource: No dialogue lines available")
 		return null

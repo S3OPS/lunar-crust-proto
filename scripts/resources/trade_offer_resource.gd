@@ -37,11 +37,11 @@ func is_expired() -> bool:
 
 func add_sender_item(item_id: String, quantity: int) -> void:
 	"""Add item to sender's offer"""
-	sender_items[item_id] = quantity
+	sender_items[item_id] = sender_items.get(item_id, 0) + quantity
 
 func add_receiver_item(item_id: String, quantity: int) -> void:
 	"""Add item to receiver's offer"""
-	receiver_items[item_id] = quantity
+	receiver_items[item_id] = receiver_items.get(item_id, 0) + quantity
 
 func get_total_value() -> int:
 	"""Get total gold value of trade"""

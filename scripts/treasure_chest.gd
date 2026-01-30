@@ -15,6 +15,14 @@ var player_in_range: bool = false
 @onready var lid = $Lid
 
 func _ready() -> void:
+	# Validate required child nodes exist
+	if not mesh_instance:
+		push_error("TreasureChest: MeshInstance3D child node is missing")
+	if not interaction_area:
+		push_error("TreasureChest: InteractionArea child node is missing")
+	if not lid:
+		push_error("TreasureChest: Lid child node is missing")
+	
 	# Connect signals
 	if interaction_area:
 		interaction_area.body_entered.connect(_on_body_entered)
@@ -47,10 +55,29 @@ func open_chest() -> void:
 	# Generate loot
 	if loot_table:
 		var drops = loot_table.get_random_drops()
+		
+		# Validate drops is valid
+		if drops == null:
+			push_error("TreasureChest: get_random_drops() returned null")
+			return
+		
 		var gold = loot_table.get_random_gold()
 		
 		# Add items to inventory
 		for drop in drops:
+			# Validate drop has required properties
+			if drop == null:
+				push_error("TreasureChest: Drop item is null")
+				continue
+			
+			if not ("item_id" in drop):
+				push_error("TreasureChest: Drop item missing required property 'item_id': ", drop)
+				continue
+			
+			if not ("quantity" in drop):
+				push_error("TreasureChest: Drop item missing required property 'quantity': ", drop)
+				continue
+			
 			InventoryManager.add_item(drop.item_id, drop.quantity)
 		
 		# Add gold

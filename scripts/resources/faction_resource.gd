@@ -58,6 +58,11 @@ func get_reputation_progress() -> float:
 	
 	var current_threshold = REPUTATION_THRESHOLDS[reputation_tier]
 	var next_threshold = REPUTATION_THRESHOLDS[tiers[current_index + 1]]
+	
+	# Guard against division by zero
+	if next_threshold == current_threshold:
+		return 1.0
+	
 	var progress = float(current_reputation - current_threshold) / float(next_threshold - current_threshold)
 	
 	return clamp(progress, 0.0, 1.0)

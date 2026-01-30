@@ -81,7 +81,7 @@ static func create_sample_companions() -> Array[CompanionResource]:
 	aragorn.daily_cost = 75
 	aragorn.required_level = 10
 	aragorn.required_quest = "reach_rohan"
-	aragorn.abilities = ["kings_valor", "andúril_strike", "leadership"]
+	aragorn.abilities = ["kings_valor", "anduril_strike", "leadership"]
 	companions.append(aragorn)
 	
 	# ========================================

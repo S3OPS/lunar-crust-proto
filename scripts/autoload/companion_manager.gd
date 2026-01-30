@@ -91,7 +91,7 @@ func dismiss_companion(companion_id: String) -> bool:
 		return false
 	
 	if companion_id not in active_companions:
-		print("Companion not active")
+		push_error("Companion not active: " + companion_id)
 		return false
 	
 	var companion = companions[companion_id]
@@ -138,6 +138,7 @@ func get_active_companions() -> Array[CompanionResource]:
 func level_up_companion(companion_id: String) -> void:
 	"""Level up a companion"""
 	if companion_id not in companions:
+		push_error("Companion not found: " + companion_id)
 		return
 	
 	var companion = companions[companion_id]
