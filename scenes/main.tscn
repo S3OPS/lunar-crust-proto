@@ -1,17 +1,17 @@
-[gd_scene load_steps=17 format=3 uid="uid://b7l5eajkwu0y5"]
+[gd_scene load_steps=20 format=3 uid="uid://b7l5eajkwu0y5"]
 
 [ext_resource type="PackedScene" uid="uid://cndx3jtslmx2e" path="res://scenes/player/player.tscn" id="1_k5kxq"]
 [ext_resource type="PackedScene" uid="uid://dgwrv5n2lsxl6" path="res://scenes/ui/hud.tscn" id="2_hud"]
 [ext_resource type="PackedScene" uid="uid://cyj3f7s2uwh0r" path="res://scenes/enemies/orc.tscn" id="3_enemy"]
 [ext_resource type="PackedScene" uid="uid://bk3yv5qx8h7wd" path="res://scenes/ui/quest_journal.tscn" id="4_quest_journal"]
-[ext_resource type="PackedScene" uid="uid://c7m8n9p0q1r2s" path="res://scenes/ui/inventory_panel.tscn" id="5_inventory_panel"]
-[ext_resource type="PackedScene" uid="uid://d8n9o0p1q2r3t" path="res://scenes/ui/dialogue_panel.tscn" id="6_dialogue_panel"]
+[ext_resource type="PackedScene" uid="uid://c7m8oap0q1r2s" path="res://scenes/ui/inventory_panel.tscn" id="5_inventory_panel"]
+[ext_resource type="PackedScene" uid="uid://eae3xsr6uwc2" path="res://scenes/ui/dialogue_panel.tscn" id="6_dialogue_panel"]
 [ext_resource type="PackedScene" uid="uid://gandalf001" path="res://scenes/npcs/gandalf.tscn" id="7_gandalf"]
 [ext_resource type="PackedScene" uid="uid://legolas001" path="res://scenes/npcs/legolas.tscn" id="8_legolas"]
 [ext_resource type="PackedScene" uid="uid://gimli001" path="res://scenes/npcs/gimli.tscn" id="9_gimli"]
 [ext_resource type="PackedScene" uid="uid://guide001" path="res://scenes/npcs/guide.tscn" id="10_guide"]
 [ext_resource type="Script" path="res://scripts/game_initializer.gd" id="11_initializer"]
-[ext_resource type="PackedScene" uid="uid://treasure_chest001" path="res://scenes/items/treasure_chest.tscn" id="12_chest"]
+[ext_resource type="PackedScene" path="res://scenes/items/treasure_chest.tscn" id="12_chest"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -26,6 +26,10 @@ sky = SubResource("Sky_1")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_1"]
+vertices = PackedVector3Array(-50, 0.5, -50, -50, 0.5, 50, 50, 0.5, 50, 50, 0.5, -50)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
 [sub_resource type="PlaneMesh" id="PlaneMesh_1"]
 size = Vector2(100, 100)
 
@@ -34,10 +38,6 @@ albedo_color = Color(0.3, 0.6, 0.3, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1"]
 size = Vector3(100, 0.1, 100)
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_1"]
-vertices = PackedVector3Array(-50, 0.5, -50, -50, 0.5, 50, 50, 0.5, 50, 50, 0.5, -50)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Main" type="Node3D"]
 
