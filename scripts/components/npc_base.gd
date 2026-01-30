@@ -10,12 +10,16 @@ extends CharacterBody3D
 
 var player_in_range: bool = false
 var player_ref: Node3D = null
+var game_initializer: Node = null
 
 @onready var interaction_area = $InteractionArea
 @onready var mesh_instance = $MeshInstance3D
 @onready var interaction_prompt = $InteractionPrompt
 
 func _ready() -> void:
+	# Cache GameInitializer reference
+	game_initializer = get_tree().root.get_node_or_null("GameInitializer")
+	
 	# Connect area signals
 	if interaction_area:
 		interaction_area.body_entered.connect(_on_body_entered)
@@ -62,7 +66,7 @@ func highlight_npc(enabled: bool) -> void:
 		return
 	
 	var material = mesh_instance.get_active_material(0)
-	if material:
+	if material and material is StandardMaterial3D:
 		if enabled:
 			# Add a slight glow/brightness
 			material.emission_enabled = true
@@ -77,9 +81,8 @@ func interact() -> void:
 	
 	# Start dialogue if available
 	if dialogue_id != "":
-		var game_init = get_tree().root.get_node_or_null("GameInitializer")
-		if game_init and game_init.has_method("get_dialogue"):
-			var dialogue = game_init.get_dialogue(dialogue_id)
+		if game_initializer and game_initializer.has_method("get_dialogue"):
+			var dialogue = game_initializer.get_dialogue(dialogue_id)
 			if dialogue:
 				DialogueManager.start_dialogue(dialogue)
 				EventBus.npc_interacted.emit(npc_name)

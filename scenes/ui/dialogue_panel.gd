@@ -9,8 +9,6 @@ extends Control
 @onready var choices_container = $Panel/MarginContainer/VBoxContainer/ChoicesContainer
 @onready var continue_button = $Panel/MarginContainer/VBoxContainer/ContinueButton
 
-var is_visible: bool = false
-
 func _ready() -> void:
 	# Connect signals
 	DialogueManager.dialogue_started.connect(_on_dialogue_started)
@@ -22,15 +20,15 @@ func _ready() -> void:
 	
 	# Start hidden
 	hide()
-	is_visible = false
+	visible = false
+
 
 func _input(event: InputEvent) -> void:
-	if is_visible and event.is_action_pressed("ui_accept"):
+	if visible and event.is_action_pressed("ui_accept"):
 		if continue_button.visible:
 			_on_continue_pressed()
 
 func _on_dialogue_started(_dialogue_id: String) -> void:
-	is_visible = true
 	visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
@@ -72,13 +70,11 @@ func _on_continue_pressed() -> void:
 	DialogueManager.advance_dialogue()
 
 func _on_dialogue_ended(_dialogue_id: String) -> void:
-	is_visible = false
 	visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_ui_panel_toggled(panel_name: String, should_show: bool) -> void:
 	if panel_name == "dialogue":
-		is_visible = should_show
 		visible = should_show
 		if should_show:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
