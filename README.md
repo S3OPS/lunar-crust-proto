@@ -237,6 +237,9 @@ We welcome contributions! Whether you're:
 - Improving documentation
 - Reporting bugs or suggesting enhancements
 - Creating assets or content
+- Sharing screenshots from Godot
+
+👉 **[Contributing Guide](CONTRIBUTING.md)** — Complete guide on how to contribute, report issues, and share screenshots
 
 Please feel free to open issues or submit pull requests.
 

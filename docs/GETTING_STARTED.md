@@ -455,6 +455,7 @@ If you continue to experience issues:
    - Godot version
    - Error messages from Output panel
    - Steps to reproduce the problem
+   - Screenshots showing the issue (see [CONTRIBUTING.md](../CONTRIBUTING.md) for how to share screenshots)
 
 ---
 
@@ -481,6 +482,7 @@ Once you're playing:
 ## Additional Resources
 
 - **[README.md](../README.md)** - Project overview and features
+- **[CONTRIBUTING.md](../CONTRIBUTING.md)** - How to contribute and share screenshots
 - **[GAME_DESIGN.md](GAME_DESIGN.md)** - Complete game design document
 - **[ALTERNATIVE_ENGINES.md](ALTERNATIVE_ENGINES.md)** - Why we chose Godot
 - **[REPOSITORY_STRUCTURE.md](REPOSITORY_STRUCTURE.md)** - Codebase guide for developers
